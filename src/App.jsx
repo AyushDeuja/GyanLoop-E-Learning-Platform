@@ -1,8 +1,9 @@
+import AppLayout from "./layout/AppLayout";
+
 function App() {
   return (
     <>
-      Hello
-      <h2 className="bg-green-400">hi</h2>
+      <AppLayout />
     </>
   );
 }
