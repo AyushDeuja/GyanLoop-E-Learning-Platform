@@ -1,7 +1,6 @@
-import { LogInIcon } from "lucide-react";
 import { LOGO_URL } from "../utils/constants";
 import CustomButton from "./CustomButton";
-import { NavLink } from "react-router-dom"; // <-- fix here
+import { NavLink } from "react-router";
 
 const NavBar = () => {
   return (
