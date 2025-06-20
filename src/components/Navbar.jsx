@@ -1,29 +1,41 @@
+import { LogInIcon } from "lucide-react";
 import { LOGO_URL } from "../utils/constants";
 import CustomButton from "./CustomButton";
+import { NavLink } from "react-router-dom"; // <-- fix here
 
 const NavBar = () => {
   return (
     <nav className="flex items-center justify-between p-4 px-20 shadow-lg text-white">
       <div className="cursor-pointer">
-        <img src={LOGO_URL} alt="Logo Img" className="h-13 w-15" />
+        <NavLink to="/">
+          <img src={LOGO_URL} alt="Logo Img" className="h-13 w-15" />
+        </NavLink>
       </div>
       <div>
         <ul className="flex space-x-5">
           <li>
-            <a
-              href="/"
-              className="text-lg font-medium transition-colors duration-300 relative after:absolute after:w-0 after:h-0.5 after:bg-amber-500 after:bottom-[-4px] after:left-0 after:duration-300 hover:after:w-full"
+            <NavLink
+              to="/courses"
+              className={({ isActive }) =>
+                `text-lg font-medium transition-colors duration-300 relative after:absolute after:w-0 after:h-0.5 after:bg-amber-500 after:bottom-[-4px] after:left-0 after:duration-300 hover:after:w-full ${
+                  isActive ? "after:w-full text-amber-500" : ""
+                }`
+              }
             >
               Courses
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              href="/about"
-              className="text-lg font-medium transition-colors duration-300 relative after:absolute after:w-0 after:h-0.5 after:bg-amber-500 after:bottom-[-4px] after:left-0 after:duration-300 hover:after:w-full"
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `text-lg font-medium transition-colors duration-300 relative after:absolute after:w-0 after:h-0.5 after:bg-amber-500 after:bottom-[-4px] after:left-0 after:duration-300 hover:after:w-full ${
+                  isActive ? "after:w-full text-amber-500" : ""
+                }`
+              }
             >
               About
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
