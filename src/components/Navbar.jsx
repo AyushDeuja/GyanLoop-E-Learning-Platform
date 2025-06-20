@@ -43,7 +43,7 @@ const NavBar = () => {
       <div className="flex items-center space-x-4">
         <CustomButton
           label={"Sign Up"}
-          className={"p-5 !bg-blue-500"}
+          className={"p-5 !bg-blue-600"}
           onClick={() => navigate("/signup")}
         />
         <CustomButton

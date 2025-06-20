@@ -9,5 +9,6 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    <ToastContainer autoClose={500} pauseOnHover={true} position="top-right" />
   </StrictMode>
 );
