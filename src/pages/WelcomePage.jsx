@@ -1,10 +1,14 @@
+import React from "react";
 import CustomButton from "../components/CustomButton";
+import FeatureCard from "../components/FeatureCard";
 import { Video, UserCheck, LineChart, BadgeCheck } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const WelcomePage = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background text-white flex justify-center flex-col">
-      <div className="flex flex-col justify-center w-full max-w-2xl px-6 py-12 mx-auto">
+      <div className="flex flex-col justify-center w-full max-w-2xl px-6 py-10 mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-center mt-4">
           Learn Anything, Anytime, Anywhere
         </h1>
@@ -13,11 +17,15 @@ const WelcomePage = () => {
           comprehensive online learning platform.
         </p>
         <div className="mt-8 w-full flex justify-center">
-          <CustomButton label="Get Started" className="p-5" />
+          <CustomButton
+            label="Get Started"
+            className="p-5"
+            onClick={() => navigate("/courses")}
+          />
         </div>
       </div>
 
-      <div className=" py-16 px-4 sm:px-6 lg:px-20 text-white">
+      <div className="py-10 px-4 sm:px-6 lg:px-20 text-white">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold">Why Choose EduPlatform?</h2>
           <p className="mt-2 text-gray-600">
@@ -26,45 +34,26 @@ const WelcomePage = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          <div className="border rounded-lg p-6 text-center shadow-sm hover:shadow-md transition">
-            <div className="mx-auto mb-4 bg-blue-100 p-3 rounded-lg w-fit">
-              <Video className="w-6 h-6 text-blue-500" />
-            </div>
-            <h3 className="font-semibold text-lg mb-1">Interactive Lessons</h3>
-            <p className="text-gray-600 text-sm">
-              Engaging video content with quizzes and hands-on exercises
-            </p>
-          </div>
-
-          <div className="border rounded-lg p-6 text-center shadow-sm hover:shadow-md transition">
-            <div className="mx-auto mb-4 bg-blue-100 p-3 rounded-lg w-fit">
-              <UserCheck className="w-6 h-6 text-blue-500" />
-            </div>
-            <h3 className="font-semibold text-lg mb-1">Expert Instructors</h3>
-            <p className="text-gray-600 text-sm">
-              Learn from industry professionals and certified educators
-            </p>
-          </div>
-
-          <div className="border rounded-lg p-6 text-center shadow-sm hover:shadow-md transition">
-            <div className="mx-auto mb-4 bg-blue-100 p-3 rounded-lg w-fit">
-              <LineChart className="w-6 h-6 text-blue-500" />
-            </div>
-            <h3 className="font-semibold text-lg mb-1">Progress Tracking</h3>
-            <p className="text-gray-600 text-sm">
-              Monitor your learning journey with detailed analytics
-            </p>
-          </div>
-
-          <div className="border rounded-lg p-6 text-center shadow-sm hover:shadow-md transition">
-            <div className="mx-auto mb-4 bg-blue-100 p-3 rounded-lg w-fit">
-              <BadgeCheck className="w-6 h-6 text-blue-500" />
-            </div>
-            <h3 className="font-semibold text-lg mb-1">Certificates</h3>
-            <p className="text-gray-600 text-sm">
-              Earn verified certificates upon course completion
-            </p>
-          </div>
+          <FeatureCard
+            icon={<Video className="w-6 h-6 text-blue-500" />}
+            title="Interactive Lessons"
+            description="Engaging video content with quizzes and hands-on exercises"
+          />
+          <FeatureCard
+            icon={<UserCheck className="w-6 h-6 text-blue-500" />}
+            title="Expert Instructors"
+            description="Learn from industry professionals and certified educators"
+          />
+          <FeatureCard
+            icon={<LineChart className="w-6 h-6 text-blue-500" />}
+            title="Progress Tracking"
+            description="Monitor your learning journey with detailed analytics"
+          />
+          <FeatureCard
+            icon={<BadgeCheck className="w-6 h-6 text-blue-500" />}
+            title="Certificates"
+            description="Earn verified certificates upon course completion"
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 text-center gap-6">

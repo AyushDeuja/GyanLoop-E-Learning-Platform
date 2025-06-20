@@ -8,7 +8,7 @@ function App() {
       <Route path="/" element={<AppLayout />}>
         <Route index element={<WelcomePage />} />
         <Route path="/courses" element={<div>Courses Page</div>} />
-        <Route path="/about" element={<div>About Page</div>} />
+        <Route path="/dashboard" element={<div>About Page</div>} />
       </Route>
     </Routes>
   );
