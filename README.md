@@ -22,7 +22,7 @@
 - Tailwind CSS - for styling - [Link]
 - React Router - [Link](https://reactrouter.com/start/declarative/installation)
 - Lucide react icons - [Link](https://lucide.dev/guide/packages/lucide-react)
+- react-toastify - [Link](https://www.npmjs.com/package/react-toastify)
 - Axios - [Link](https://axios-http.com/docs/intro)
 - jwt-decode - [Link](https://www.npmjs.com/package/jwt-decode)
-- react-toastify - [Link](https://www.npmjs.com/package/react-toastify)
 - Redux - [Link](https://redux.js.org/tutorials/quick-start)

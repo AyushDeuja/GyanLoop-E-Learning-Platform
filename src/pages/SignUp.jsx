@@ -1,12 +1,9 @@
 import { NavLink, useNavigate } from "react-router";
-import Button from "../components/Button";
-import Input from "../components/Input";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { axiosInstance } from "../utils/axiosInterceptor";
-import { useBook } from "../context/booksContext";
-import { useMember } from "../context/membersContext";
 import CustomButton from "../components/CustomButton";
+import CustomInput from "../components/CustomInput";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -42,10 +39,10 @@ const SignUp = () => {
           Register
         </h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
-          <Input name="name" type="text" id="name" label="Name" />
-          <Input name="email" type="email" id="email" label="Email" />
-          <Input name="mobile" type="tel" id="mobile" label="mobile" />
-          <Input
+          <CustomInput name="name" type="text" id="name" label="Name" />
+          <CustomInput name="email" type="email" id="email" label="Email" />
+          <CustomInput name="mobile" type="tel" id="mobile" label="mobile" />
+          <CustomInput
             name="password"
             type="password"
             id="password"
