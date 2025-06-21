@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router";
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <nav className="flex items-center justify-between p-4 px-20 shadow-lg text-white">
+    <nav className="flex items-center justify-between py-4 px-20 shadow-lg text-white">
       <div className="cursor-pointer">
         <NavLink to="/">
           <img src={LOGO_URL} alt="Logo Img" className="h-13 w-15" />
@@ -14,7 +14,7 @@ const NavBar = () => {
       </div>
       <div>
         <ul className="flex items-center space-x-5 h-full">
-          <li className="flex items-center">
+          <li>
             <NavLink
               to="/courses"
               className={({ isActive }) =>
@@ -26,7 +26,7 @@ const NavBar = () => {
               Courses
             </NavLink>
           </li>
-          <li className="flex items-center">
+          <li>
             <NavLink
               to="/dashboard"
               className={({ isActive }) =>
@@ -35,7 +35,7 @@ const NavBar = () => {
                 }`
               }
             >
-              DashBoard
+              Dashboard
             </NavLink>
           </li>
         </ul>

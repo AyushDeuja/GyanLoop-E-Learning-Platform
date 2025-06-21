@@ -4,24 +4,21 @@ import { toast } from "react-toastify";
 import { axiosInstance } from "../utils/axiosInterceptor";
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
+import { LOGO_URL } from "../utils/constants";
 
 //validation using Yup
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
-  const handleSubmit = async () => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const formValues = Object.fromEntries(formData.entries());
-
+    const values = Object.fromEntries(formData.entries());
     try {
-      const values = await registerSchema.validate(formValues);
-      console.log(values);
-      const response = await axiosInstance(`/auth/register`, {
-        method: "POST",
-        data: values,
-      });
+      const response = await axiosInstance.post(`/auth/register`, values);
+
       localStorage.setItem("token", response.data.token);
       navigate("/courses");
       toast.success("Welcome");
@@ -34,15 +31,18 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-indigo-700 to-purple-600">
+    <div className="min-h-screen flex gap-50 flex-row items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900">
+      <div>
+        <img src={LOGO_URL} alt="Logo" />
+      </div>
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Register
+          Sign Up
         </h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <CustomInput name="name" type="text" id="name" label="Name" />
           <CustomInput name="email" type="email" id="email" label="Email" />
-          <CustomInput name="mobile" type="tel" id="mobile" label="mobile" />
+          <CustomInput name="mobile" type="tel" id="mobile" label="Mobile" />
           <CustomInput
             name="password"
             type="password"
