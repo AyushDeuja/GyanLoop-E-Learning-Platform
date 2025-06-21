@@ -3,7 +3,7 @@ import CustomButton from "./CustomButton";
 import { NavLink, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/authSlice";
-import { LogOutIcon } from "lucide-react";
+import { LogOutIcon, User, UserIcon } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 
@@ -30,7 +30,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="flex items-center justify-between py-4 px-20 shadow-lg text-white relative">
+      <nav className="flex items-center justify-between py-4 px-20 shadow-lg text-white sticky top-0 z-20 backdrop-blur-sm bg-gray-900/10">
         <div className="cursor-pointer">
           <NavLink to="/">
             <img src={LOGO_URL} alt="Logo Img" className="h-13 w-15" />
@@ -69,7 +69,8 @@ const NavBar = () => {
         <div className="flex items-center space-x-8">
           {user ? (
             <>
-              <span className="text-lg font-medium text-white">
+              <span className="flex items-center gap-2 text-lg font-medium text-white">
+                <UserIcon className="w-5 h-5" />
                 {user.name || "User"}
               </span>
               <CustomButton
