@@ -17,6 +17,13 @@ export default function CourseCard({
 }) {
   const buttonLabel = isEnrolled ? "Continue Learning" : "Enroll Now";
 
+  // Map difficulty levels to background color classes
+  const difficultyColors = {
+    beginner: "bg-green-600 text-white",
+    intermediate: "bg-yellow-400 text-black",
+    advanced: "bg-red-600 text-white",
+  };
+
   return (
     <div className=" bg-[#0f172a] text-white rounded-xl overflow-hidden border border-gray-700 w-[430px] shadow-lg">
       <img
@@ -30,13 +37,17 @@ export default function CourseCard({
           <span className="bg-blue-800 text-white px-2 py-0.5 rounded-full">
             {category}
           </span>
-          <span className="bg-yellow-200 text-black px-2 py-0.5 rounded-full">
+          <span
+            className={`px-2 py-0.5 rounded-full ${
+              difficultyColors[difficulty] || "bg-gray-400 text-black"
+            }`}
+          >
             {difficulty}
           </span>
         </div>
 
         <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-sm text-gray-300">by {instructor}</p>
+        <p className="text-sm text-gray-300">By {instructor}</p>
         <p className="text-sm text-gray-400">{description}</p>
 
         <div className="flex justify-between text-sm text-gray-300 pt-2">

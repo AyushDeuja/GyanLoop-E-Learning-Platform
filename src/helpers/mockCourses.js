@@ -89,7 +89,8 @@ export const mockCourses = [
     rating: 4.7,
     enrolledStudents: 980,
     price: 109.99,
-    image: "/placeholder.svg",
+    image:
+      "https://graffersid.com/wp-content/uploads/2023/08/Future-Of-MERN-Stack-Development.webp",
     prerequisites: ["JavaScript", "Basic React", "Node.js"],
     modules: [
       {
@@ -151,7 +152,8 @@ export const mockCourses = [
     rating: 4.6,
     enrolledStudents: 3200,
     price: 49.99,
-    image: "/placeholder.svg",
+    image:
+      "https://cdn-cjmik.nitrocdn.com/UjszoEMIGzQLBmRYICliaPmdTnvQlovN/assets/images/optimized/rev-b7b1dec/www.aalpha.net/wp-content/uploads/2019/10/Python-programming-india.jpg",
     prerequisites: ["None"],
     modules: [
       {
@@ -215,7 +217,8 @@ export const mockCourses = [
     rating: 4.3,
     enrolledStudents: 870,
     price: 59.99,
-    image: "/placeholder.svg",
+    image:
+      "https://www.pranathiss.com/blog/wp-content/uploads/ui-and-ux-Designing-agency.png",
     prerequisites: ["Basic computer skills"],
     modules: [
       {
@@ -281,7 +284,8 @@ export const mockCourses = [
     rating: 4.9,
     enrolledStudents: 2100,
     price: 99.99,
-    image: "/placeholder.svg",
+    image:
+      "https://courses.wscubetech.com/s/store/courses/5f7edfd90cf212378353d729/cover.jpg?v=2",
     prerequisites: ["Basic Java"],
     modules: [
       {
@@ -344,7 +348,8 @@ export const mockCourses = [
     rating: 4.7,
     enrolledStudents: 1550,
     price: 79.99,
-    image: "/placeholder.svg",
+    image:
+      "https://media.geeksforgeeks.org/wp-content/uploads/20250114194845708449/SQL-for-Data-Analysis.webp",
     prerequisites: ["Basic Excel or data handling"],
     modules: [
       {

@@ -23,7 +23,7 @@ const Courses = () => {
 
       <div>{/*search bars here*/}</div>
 
-      <div className="flex flex-wrap gap-5 my-5">
+      <div className="flex flex-wrap gap-8 my-5">
         {mockCourses.map((course) => {
           const isEnrolled = enrolledCourses.includes(course.id);
 
