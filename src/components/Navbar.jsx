@@ -31,17 +31,14 @@ const NavBar = () => {
   return (
     <>
       <nav className="flex items-center justify-between py-4 px-20 shadow-lg text-white relative">
-        {/* Logo */}
         <div className="cursor-pointer">
           <NavLink to="/">
             <img src={LOGO_URL} alt="Logo Img" className="h-13 w-15" />
           </NavLink>
         </div>
 
-        {/* Center Nav Links */}
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <ul className="flex items-center space-x-5 h-full ">
-            {/* ... your nav links */}
             <li>
               <NavLink
                 to="/courses"
@@ -69,7 +66,6 @@ const NavBar = () => {
           </ul>
         </div>
 
-        {/* Right Side Buttons */}
         <div className="flex items-center space-x-8">
           {user ? (
             <>
@@ -80,7 +76,7 @@ const NavBar = () => {
                 buttonIcon={<LogOutIcon className="w-5 h-5" />}
                 label={"Logout"}
                 className={"p-5 bg-red-800"}
-                onClick={handleLogoutClick} // show modal on click
+                onClick={handleLogoutClick}
               />
             </>
           ) : (

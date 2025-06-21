@@ -19,7 +19,9 @@ const Login = () => {
 
   useEffect(() => {
     if (message) {
-      toast.info(message);
+      toast.info(message, {
+        autoClose: 3000,
+      });
     }
   }, [message]);
 
