@@ -4,6 +4,7 @@ import AppLayout from "./layout/AppLayout";
 import WelcomePage from "./pages/WelcomePage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Courses from "./pages/Courses";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -23,7 +24,7 @@ function App() {
 
       <Route path="/" element={<AppLayout />}>
         <Route index element={<WelcomePage />} />
-        <Route path="courses" element={<div>Courses Page</div>} />
+        <Route path="courses" element={<Courses />} />
 
         <Route
           path="dashboard"
