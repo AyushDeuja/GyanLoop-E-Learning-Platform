@@ -5,6 +5,8 @@ import { axiosInstance } from "../utils/axiosInterceptor";
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
 
+//validation using Yup
+
 const SignUp = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,7 +15,6 @@ const SignUp = () => {
     const formData = new FormData(e.currentTarget);
     const formValues = Object.fromEntries(formData.entries());
 
-    //fetching api
     try {
       const values = await registerSchema.validate(formValues);
       console.log(values);
@@ -22,7 +23,7 @@ const SignUp = () => {
         data: values,
       });
       localStorage.setItem("token", response.data.token);
-      navigate("/");
+      navigate("/courses");
       toast.success("Welcome");
     } catch (err) {
       setErrorMessage(
@@ -51,7 +52,7 @@ const SignUp = () => {
           {errorMessage && (
             <p className="text-red-500 text-sm text-center">{errorMessage}</p>
           )}
-          <CustomButton label="Register" type="submit" />
+          <CustomButton label="Sign Up" type="submit" />
         </form>
         <p className="text-md text-center text-gray-800 mt-6">
           Already have an account?{" "}

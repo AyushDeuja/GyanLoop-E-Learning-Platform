@@ -27,7 +27,7 @@ const WelcomePage = () => {
 
       <div className="py-10 px-4 sm:px-6 lg:px-20 text-white">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold">Why Choose EduPlatform?</h2>
+          <h2 className="text-3xl font-bold">Why Choose GyanLoop?</h2>
           <p className="mt-2 text-gray-600">
             We provide everything you need to succeed in your learning journey
           </p>
