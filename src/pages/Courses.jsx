@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { mockCourses } from "../helpers/mockCourses";
+import CourseCard from "../components/CourseCard";
 
 const Courses = () => {
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
+
+  const handleEnroll = (courseId) => {
+    if (!enrolledCourses.includes(courseId)) {
+      setEnrolledCourses((prev) => [...prev, courseId]);
+    }
+  };
+
   return (
     <div>
       <div className="text-white py-8">
@@ -10,8 +20,23 @@ const Courses = () => {
           level.
         </p>
       </div>
+
       <div>{/*search bars here*/}</div>
-      <div>{/*cards here*/}</div>
+
+      <div className="flex flex-wrap gap-5 my-5">
+        {mockCourses.map((course) => {
+          const isEnrolled = enrolledCourses.includes(course.id);
+
+          return (
+            <CourseCard
+              key={course.id}
+              {...course}
+              isEnrolled={isEnrolled}
+              onEnroll={() => handleEnroll(course.id)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

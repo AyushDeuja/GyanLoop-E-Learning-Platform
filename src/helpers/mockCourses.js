@@ -11,7 +11,8 @@ export const mockCourses = [
     rating: 4.8,
     enrolledStudents: 1250,
     price: 89.99,
-    image: "/placeholder.svg",
+    image:
+      "https://miro.medium.com/v2/resize:fit:680/1*RDN058L5gQ02Xy13OaxjnQ.jpeg",
     prerequisites: ["Basic JavaScript", "HTML/CSS"],
     modules: [
       {
