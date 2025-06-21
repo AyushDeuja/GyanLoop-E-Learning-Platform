@@ -63,30 +63,8 @@ export const mockCourses = [
           },
         ],
       },
-      {
-        id: "m2",
-        title: "State and Props",
-        isCompleted: false,
-        lessons: [
-          {
-            id: "l4",
-            title: "Understanding State",
-            type: "video",
-            duration: "18 min",
-            videoUrl: "https://www.youtube.com/embed/dGcsHMXbSOA",
-            isCompleted: false,
-          },
-          {
-            id: "l5",
-            title: "Props Deep Dive",
-            type: "video",
-            duration: "22 min",
-            videoUrl: "https://www.youtube.com/embed/dGcsHMXbSOA",
-            isCompleted: false,
-          },
-        ],
-      },
     ],
+
     reviews: [
       {
         id: "r1",
@@ -125,6 +103,26 @@ export const mockCourses = [
             duration: "12 min",
             videoUrl: "https://www.youtube.com/embed/Ke90Tje7VS0",
             isCompleted: true,
+          },
+          {
+            id: "l2",
+            title: "MERN Quiz",
+            type: "quiz",
+            duration: "10 min",
+            isCompleted: false,
+            quiz: {
+              id: "q2",
+              questions: [
+                {
+                  id: "q2-1",
+                  type: "multiple-choice",
+                  question: "Which database is used in the MERN stack?",
+                  options: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+                  correctAnswer: 2,
+                  explanation: "MongoDB is the NoSQL database used in MERN.",
+                },
+              ],
+            },
           },
         ],
       },
@@ -168,6 +166,28 @@ export const mockCourses = [
             videoUrl: "https://www.youtube.com/embed/rfscVS0vtbw",
             isCompleted: true,
           },
+          {
+            id: "l2",
+            title: "Python Basics Quiz",
+            type: "quiz",
+            duration: "8 min",
+            isCompleted: false,
+            quiz: {
+              id: "q3",
+              questions: [
+                {
+                  id: "q3-1",
+                  type: "multiple-choice",
+                  question:
+                    "Which keyword is used to define a function in Python?",
+                  options: ["func", "function", "def", "lambda"],
+                  correctAnswer: 2,
+                  explanation:
+                    "In Python, functions are defined using the `def` keyword.",
+                },
+              ],
+            },
+          },
         ],
       },
     ],
@@ -210,6 +230,31 @@ export const mockCourses = [
             videoUrl: "https://www.youtube.com/embed/_OcozA0MDrM",
             isCompleted: false,
           },
+          {
+            id: "l2",
+            title: "UI/UX Quiz",
+            type: "quiz",
+            duration: "7 min",
+            isCompleted: false,
+            quiz: {
+              id: "q4",
+              questions: [
+                {
+                  id: "q4-1",
+                  type: "multiple-choice",
+                  question: "What does UI stand for?",
+                  options: [
+                    "User Integration",
+                    "User Interface",
+                    "User Input",
+                    "Unified Interaction",
+                  ],
+                  correctAnswer: 1,
+                  explanation: "UI stands for User Interface.",
+                },
+              ],
+            },
+          },
         ],
       },
     ],
@@ -250,6 +295,27 @@ export const mockCourses = [
             duration: "17 min",
             videoUrl: "https://www.youtube.com/embed/Wo8z3TFd3nw",
             isCompleted: false,
+          },
+          {
+            id: "l2",
+            title: "DSA Quiz",
+            type: "quiz",
+            duration: "12 min",
+            isCompleted: false,
+            quiz: {
+              id: "q5",
+              questions: [
+                {
+                  id: "q5-1",
+                  type: "multiple-choice",
+                  question: "Which data structure uses LIFO principle?",
+                  options: ["Queue", "Stack", "Array", "Linked List"],
+                  correctAnswer: 1,
+                  explanation:
+                    "Stack follows Last-In-First-Out (LIFO) principle.",
+                },
+              ],
+            },
           },
         ],
       },
@@ -292,6 +358,27 @@ export const mockCourses = [
             duration: "20 min",
             videoUrl: "https://www.youtube.com/embed/9Pzj7Aj25lw",
             isCompleted: true,
+          },
+          {
+            id: "l2",
+            title: "SQL Basics Quiz",
+            type: "quiz",
+            duration: "10 min",
+            isCompleted: false,
+            quiz: {
+              id: "q6",
+              questions: [
+                {
+                  id: "q6-1",
+                  type: "multiple-choice",
+                  question: "Which SQL command is used to retrieve data?",
+                  options: ["GET", "FETCH", "SELECT", "RETRIEVE"],
+                  correctAnswer: 2,
+                  explanation:
+                    "`SELECT` is used to fetch data from a database.",
+                },
+              ],
+            },
           },
         ],
       },
