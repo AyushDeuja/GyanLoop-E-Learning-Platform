@@ -1,5 +1,5 @@
-import { NavLink, useNavigate } from "react-router";
-import { useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { axiosInstance } from "../utils/axiosInterceptor";
 import CustomInput from "../components/CustomInput";
@@ -7,11 +7,21 @@ import CustomButton from "../components/CustomButton";
 import { LOGO_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/authSlice";
+import { LucideArrowLeft } from "lucide-react";
 
 const Login = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
+
+  const location = useLocation();
+  const message = location.state?.message;
+
+  useEffect(() => {
+    if (message) {
+      toast.info(message);
+    }
+  }, [message]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,9 +48,10 @@ const Login = () => {
         <img src={LOGO_URL} alt="Logo" />
       </div>
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Login
-        </h1>
+        <div className="flex items-center justify-between mb-6">
+          <LucideArrowLeft className="h-6 w-6" onClick={() => navigate("/")} />
+          <h1 className="text-2xl font-bold text-gray-800">Login</h1>
+        </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <CustomInput
             name="username"

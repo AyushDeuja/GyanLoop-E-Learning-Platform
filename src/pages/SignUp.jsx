@@ -7,6 +7,7 @@ import CustomInput from "../components/CustomInput";
 import { LOGO_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/authSlice";
+import { LucideArrowLeft } from "lucide-react";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -36,9 +37,10 @@ const SignUp = () => {
         <img src={LOGO_URL} alt="Logo" />
       </div>
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Sign Up
-        </h1>
+        <div className="flex items-center justify-between mb-6">
+          <LucideArrowLeft className="h-6 w-6" onClick={() => navigate("/")} />
+          <h1 className="text-2xl font-bold text-gray-800">Sign Up</h1>
+        </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <CustomInput name="name" type="text" id="name" label="Name" />
           <CustomInput name="email" type="email" id="email" label="Email" />

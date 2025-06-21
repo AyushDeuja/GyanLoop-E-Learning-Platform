@@ -3,6 +3,7 @@ import CustomButton from "./CustomButton";
 import { NavLink, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/authSlice";
+import { LogOutIcon } from "lucide-react";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -10,14 +11,14 @@ const NavBar = () => {
   const user = useSelector((state) => state.auth.user);
 
   return (
-    <nav className="flex items-center justify-between py-4 px-20 shadow-lg text-white">
+    <nav className="flex items-center justify-between py-4 px-20 shadow-lg text-white relative">
       <div className="cursor-pointer">
         <NavLink to="/">
           <img src={LOGO_URL} alt="Logo Img" className="h-13 w-15" />
         </NavLink>
       </div>
 
-      <div className="">
+      <div className="absolute left-1/2 transform -translate-x-1/2">
         <ul className="flex items-center space-x-5 h-full ">
           <li>
             <NavLink
@@ -46,15 +47,16 @@ const NavBar = () => {
         </ul>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-8">
         {user ? (
           <>
-            <span className="text-lg font-medium text-amber-300">
-              Hello, {user.name || "User"}
+            <span className="text-lg font-medium text-white">
+              {user.name || "User"}
             </span>
             <CustomButton
+              buttonIcon={<LogOutIcon className="w-5 h-5" />}
               label={"Logout"}
-              className={"p-5"}
+              className={"p-5 bg-red-800"}
               onClick={() => {
                 dispatch(logout());
                 navigate("/login");
