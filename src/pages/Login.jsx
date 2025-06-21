@@ -5,10 +5,14 @@ import { axiosInstance } from "../utils/axiosInterceptor";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { LOGO_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/authSlice";
 
 const Login = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -16,11 +20,9 @@ const Login = () => {
 
     try {
       console.log(values);
-      const response = await axiosInstance(`/auth/login`, {
-        method: "POST",
-        data: values,
-      });
-      localStorage.setItem("token", response.data.token);
+      const response = await axiosInstance.post(`/auth/login`, values);
+
+      dispatch(login(response.data.token));
       navigate("/courses");
       toast.success("Welcome");
     } catch (errorMessage) {

@@ -5,12 +5,13 @@ import { axiosInstance } from "../utils/axiosInterceptor";
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
 import { LOGO_URL } from "../utils/constants";
-
-//validation using Yup
+import { useDispatch } from "react-redux";
+import { login } from "../redux/authSlice";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,8 +19,7 @@ const SignUp = () => {
     const values = Object.fromEntries(formData.entries());
     try {
       const response = await axiosInstance.post(`/auth/register`, values);
-
-      localStorage.setItem("token", response.data.token);
+      dispatch(login(response.data.token));
       navigate("/courses");
       toast.success("Welcome");
     } catch (err) {
