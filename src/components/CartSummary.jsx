@@ -1,12 +1,27 @@
-// components/CartSummary.jsx
-import { useDispatch } from "react-redux";
-import { clearCart } from "../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const CartSummary = ({ totalItems, totalPrice }) => {
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const navigate = useNavigate();
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+
+  const handleCheckout = () => {
+    const enrolledCourses =
+      JSON.parse(localStorage.getItem("enrolledCourses")) || [];
+
+    const updatedEnrolled = [
+      ...new Set([...enrolledCourses, ...cartItems.map((item) => item.id)]),
+    ];
+
+    localStorage.setItem("enrolledCourses", JSON.stringify(updatedEnrolled));
+
+    dispatch(clearCart());
+    navigate("/my-courses");
   };
 
   return (
@@ -25,7 +40,10 @@ const CartSummary = ({ totalItems, totalPrice }) => {
         <span>${totalPrice.toFixed(2)}</span>
       </div>
 
-      <button className="w-full bg-white text-black py-2 rounded-md mb-3 font-medium">
+      <button
+        onClick={handleCheckout}
+        className="w-full bg-white text-black py-2 rounded-md mb-3 font-medium"
+      >
         Checkout & Enroll
       </button>
 
@@ -36,7 +54,10 @@ const CartSummary = ({ totalItems, totalPrice }) => {
         Clear Cart
       </button>
 
-      <button className="w-full text-gray-300 hover:underline">
+      <button
+        onClick={() => navigate("/courses")}
+        className="w-full text-gray-300 hover:underline"
+      >
         Continue Shopping
       </button>
     </div>

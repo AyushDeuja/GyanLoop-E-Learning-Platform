@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Courses from "./pages/Courses";
 import Cart from "./pages/Cart";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -32,7 +33,7 @@ function App() {
           path="dashboard"
           element={
             <PrivateRoute redirectMessage="You must log in to access the dashboard.">
-              <div>Dashboard Page</div>
+              <Dashboard />
             </PrivateRoute>
           }
         />
