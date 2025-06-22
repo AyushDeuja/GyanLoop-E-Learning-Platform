@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
 import { Star, Users, Clock } from "lucide-react";
 import CustomButton from "./CustomButton";
-import { useDispatch } from "react-redux";
-import { addItem } from "../redux/cartSlice";
 
-export default function CourseCard({
-  id,
+const CourseCard = ({
   image,
   category,
   difficulty,
@@ -16,36 +12,12 @@ export default function CourseCard({
   enrolledStudents,
   rating,
   price,
-}) {
-  const dispatch = useDispatch();
-  const [isEnrolled, setIsEnrolled] = useState(false);
+  isEnrolled,
+  onEnroll,
+}) => {
+  const buttonLabel = isEnrolled ? "Continue Learning" : "Enroll Now";
 
-  // Check if course is already enrolled
-  useEffect(() => {
-    const enrolled = JSON.parse(localStorage.getItem("enrolledCourses")) || [];
-    setIsEnrolled(enrolled.includes(id));
-  }, [id]);
-
-  const handleAddToCart = () => {
-    dispatch(
-      addItem({
-        id,
-        image,
-        category,
-        difficulty,
-        title,
-        instructor,
-        description,
-        duration,
-        enrolledStudents,
-        rating,
-        price,
-      })
-    );
-  };
-
-  const buttonLabel = isEnrolled ? "Continue Learning" : "Add to Cart";
-
+  // Map difficulty levels to background color classes
   const difficultyColors = {
     beginner: "bg-green-600 text-white",
     intermediate: "bg-yellow-300 text-black",
@@ -96,11 +68,11 @@ export default function CourseCard({
           <CustomButton
             label={buttonLabel}
             className="p-4 bg-white !text-black"
-            onClick={isEnrolled ? () => {} : handleAddToCart}
-            disabled={isEnrolled}
+            onClick={onEnroll}
           />
         </div>
       </div>
     </div>
   );
-}
+};
+export default CourseCard;

@@ -11,7 +11,6 @@ const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const cartItems = useSelector((store) => store.cart.items);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -70,17 +69,6 @@ const NavBar = () => {
         <div className="flex items-center space-x-8">
           {user ? (
             <>
-              <span className="relative flex items-center cursor-pointer">
-                <ShoppingCart
-                  className="text-white w-5 h-5"
-                  onClick={() => navigate("/cart")}
-                />
-                {cartItems.length > 0 && (
-                  <span className="absolute -top-2.5 -right-3 bg-white text-xs font-bold text-black rounded-full px-2 py-0.5 shadow">
-                    {cartItems.length}
-                  </span>
-                )}
-              </span>
               <span className="flex items-center gap-2 text-lg font-medium text-white">
                 <UserIcon className="w-5 h-5" />
                 {user.name || "User"}

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { mockCourses } from "../helpers/mockCourses";
 import CourseCard from "../components/CourseCard";
-import SearchBar from "../components/SearchBar"; // 👈 import it
-import { CarTaxiFront, ShoppingCart, Store } from "lucide-react";
-import { useSelector } from "react-redux";
+import SearchBar from "../components/SearchBar";
 
 const Courses = () => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -23,7 +21,6 @@ const Courses = () => {
     setFilters((prev) => ({ ...prev, [field]: value }));
   };
 
-  // 🔍 Filter logic
   const filteredCourses = mockCourses.filter((course) => {
     const matchesSearch =
       course.title.toLowerCase().includes(filters.search.toLowerCase()) ||
