@@ -12,7 +12,6 @@ const Courses = () => {
     category: "",
     level: "",
   });
-  const cartItems = useSelector((store) => store.cart.items);
 
   const handleEnroll = (courseId) => {
     if (!enrolledCourses.includes(courseId)) {
@@ -44,15 +43,10 @@ const Courses = () => {
   return (
     <div>
       <div className="text-white py-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h1 className="font-bold text-3xl md:text-4xl text-white">
-            Course Catalog
-          </h1>
-          <span className="flex items-center gap-2 bg-gray-900/20 px-4 py-2 rounded-lg shadow text-white">
-            <ShoppingCart size={24} />
-            <span className="font-medium">Cart ({cartItems.length} items)</span>
-          </span>
-        </div>
+        <h1 className="font-bold text-3xl md:text-4xl text-white">
+          Course Catalog
+        </h1>
+
         <p className="text-base text-gray-400 pt-3">
           Discover and enroll in courses that match your interests and skill
           level.

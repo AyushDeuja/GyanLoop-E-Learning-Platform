@@ -3,7 +3,7 @@ import CustomButton from "./CustomButton";
 import { NavLink, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/authSlice";
-import { LogOutIcon, User, UserIcon } from "lucide-react";
+import { LogOutIcon, ShoppingCart, User, UserIcon } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 
@@ -11,6 +11,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const cartItems = useSelector((store) => store.cart.items);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -69,6 +70,14 @@ const NavBar = () => {
         <div className="flex items-center space-x-8">
           {user ? (
             <>
+              <span className="relative flex items-center cursor-pointer">
+                <ShoppingCart className="text-white w-5 h-5" />
+                {cartItems.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-amber-500 text-xs font-bold text-white rounded-full px-2 py-0.5 shadow">
+                    {cartItems.length}
+                  </span>
+                )}
+              </span>
               <span className="flex items-center gap-2 text-lg font-medium text-white">
                 <UserIcon className="w-5 h-5" />
                 {user.name || "User"}
