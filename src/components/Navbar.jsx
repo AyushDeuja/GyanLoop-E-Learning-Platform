@@ -71,9 +71,12 @@ const NavBar = () => {
           {user ? (
             <>
               <span className="relative flex items-center cursor-pointer">
-                <ShoppingCart className="text-white w-5 h-5" />
+                <ShoppingCart
+                  className="text-white w-5 h-5"
+                  onClick={() => navigate("/cart")}
+                />
                 {cartItems.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-amber-500 text-xs font-bold text-white rounded-full px-2 py-0.5 shadow">
+                  <span className="absolute -top-2.5 -right-3 bg-white text-xs font-bold text-black rounded-full px-2 py-0.5 shadow">
                     {cartItems.length}
                   </span>
                 )}
