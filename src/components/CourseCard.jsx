@@ -20,7 +20,7 @@ export default function CourseCard({
   // Map difficulty levels to background color classes
   const difficultyColors = {
     beginner: "bg-green-600 text-white",
-    intermediate: "bg-yellow-400 text-black",
+    intermediate: "bg-yellow-300 text-black",
     advanced: "bg-red-600 text-white",
   };
 
@@ -39,7 +39,7 @@ export default function CourseCard({
           </span>
           <span
             className={`px-2 py-0.5 rounded-full ${
-              difficultyColors[difficulty] || "bg-gray-400 text-black"
+              difficultyColors[difficulty] || "bg-gray-500 text-white"
             }`}
           >
             {difficulty}
@@ -58,7 +58,8 @@ export default function CourseCard({
             <Users size={16} /> {enrolledStudents}
           </span>
           <span className="flex items-center gap-1">
-            <Star size={16} className="text-yellow-400" /> {rating}
+            <Star size={16} className="text-yellow-400 fill-yellow-400" />{" "}
+            {rating}
           </span>
         </div>
 

@@ -276,7 +276,8 @@ export const mockCourses = [
   {
     id: "5",
     title: "Data Structures and Algorithms in Java",
-    description: "Deep dive into DSA with Java to crack technical interviews.",
+    description:
+      "Deep dive into advanced DSA concepts with Java to confidently crack challenging technical interviews",
     instructor: "Robert Martin",
     category: "Computer Science",
     difficulty: "advanced",
@@ -340,7 +341,7 @@ export const mockCourses = [
     id: "6",
     title: "Mastering SQL for Data Analysis",
     description:
-      "Write powerful SQL queries for extracting and analyzing data.",
+      "Write powerful, efficient SQL queries for extracting, transforming, and analyzing complex data.",
     instructor: "Aisha Patel",
     category: "Data Analysis",
     difficulty: "intermediate",
