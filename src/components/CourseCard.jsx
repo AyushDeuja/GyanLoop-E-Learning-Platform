@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import { Star, Users, Clock } from "lucide-react";
 import CustomButton from "./CustomButton";
 
 const CourseCard = ({
+  id,
   image,
   category,
   difficulty,
@@ -15,9 +18,27 @@ const CourseCard = ({
   isEnrolled,
   onEnroll,
 }) => {
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+
+  const handleClick = () => {
+    if (!token) {
+      navigate("/login", {
+        state: { message: "You must log in to enroll." },
+        replace: true,
+      });
+      return;
+    }
+
+    if (isEnrolled) {
+      navigate(`/courses/${id}`);
+    } else {
+      onEnroll(); //  This triggers enroll and button becomes "Continue Learning"
+    }
+  };
+
   const buttonLabel = isEnrolled ? "Continue Learning" : "Enroll Now";
 
-  // Map difficulty levels to background color classes
   const difficultyColors = {
     beginner: "bg-green-600 text-white",
     intermediate: "bg-yellow-300 text-black",
@@ -25,13 +46,12 @@ const CourseCard = ({
   };
 
   return (
-    <div className=" bg-[#0f172a] text-white rounded-xl overflow-hidden border border-gray-700 w-[430px] shadow-lg">
+    <div className="bg-[#0f172a] text-white rounded-xl overflow-hidden border border-gray-700 w-[430px] shadow-lg">
       <img
         src={image}
         alt={title}
         className="w-full h-[180px] object-cover bg-gray-800"
       />
-
       <div className="p-4 space-y-2">
         <div className="flex justify-between text-sm">
           <span className="bg-blue-800 text-white px-2 py-0.5 rounded-full">
@@ -68,11 +88,12 @@ const CourseCard = ({
           <CustomButton
             label={buttonLabel}
             className="p-4 bg-white !text-black"
-            onClick={onEnroll}
+            onClick={handleClick}
           />
         </div>
       </div>
     </div>
   );
 };
+
 export default CourseCard;

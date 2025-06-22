@@ -63,6 +63,7 @@ const Courses = () => {
           return (
             <CourseCard
               key={course.id}
+              id={course.id}
               {...course}
               isEnrolled={isEnrolled}
               onEnroll={() => handleEnroll(course.id)}

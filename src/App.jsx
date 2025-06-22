@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Courses from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
+import CourseDetail from "./pages/CourseDetail";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -26,6 +27,15 @@ function App() {
       <Route path="/" element={<AppLayout />}>
         <Route index element={<WelcomePage />} />
         <Route path="courses" element={<Courses />} />
+
+        <Route
+          path="courses/:id"
+          element={
+            <PrivateRoute redirectMessage="You must log in to enroll.">
+              <CourseDetail />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="dashboard"
