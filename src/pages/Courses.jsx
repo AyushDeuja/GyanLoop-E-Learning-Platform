@@ -1,19 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { mockCourses } from "../helpers/mockCourses";
 import CourseCard from "../components/CourseCard";
 import SearchBar from "../components/SearchBar";
+import {
+  enrollInCourse,
+  setEnrollmentsForUser,
+} from "../redux/enrollmentSlice";
 
 const Courses = () => {
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const enrolledCourses = useSelector(
+    (state) => state.enrollment.enrolledByUser[user?.email] || []
+  );
+
   const [filters, setFilters] = useState({
     search: "",
     category: "",
     level: "",
   });
 
+  useEffect(() => {
+    if (user?.email) {
+      const stored = localStorage.getItem(`enrolledCourses_${user.email}`);
+      const parsed = stored ? JSON.parse(stored) : [];
+      dispatch(setEnrollmentsForUser({ email: user.email, courses: parsed }));
+    }
+  }, [user, dispatch]);
+
   const handleEnroll = (courseId) => {
     if (!enrolledCourses.includes(courseId)) {
-      setEnrolledCourses((prev) => [...prev, courseId]);
+      dispatch(enrollInCourse({ email: user.email, courseId }));
+      const updated = [...enrolledCourses, courseId];
+      localStorage.setItem(
+        `enrolledCourses_${user.email}`,
+        JSON.stringify(updated)
+      );
     }
   };
 
@@ -43,7 +66,6 @@ const Courses = () => {
         <h1 className="font-bold text-3xl md:text-4xl text-white">
           Course Catalog
         </h1>
-
         <p className="text-base text-gray-400 pt-3">
           Discover and enroll in courses that match your interests and skill
           level.
