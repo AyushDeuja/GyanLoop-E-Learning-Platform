@@ -33,7 +33,7 @@ const CourseCard = ({
     if (isEnrolled) {
       navigate(`/courses/${id}`);
     } else {
-      onEnroll(); //  This triggers enroll and button becomes "Continue Learning"
+      onEnroll();
     }
   };
 
