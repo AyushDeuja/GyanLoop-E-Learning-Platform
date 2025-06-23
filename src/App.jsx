@@ -27,10 +27,10 @@ function App() {
 
       <Route path="/" element={<AppLayout />}>
         <Route index element={<WelcomePage />} />
-        <Route path="courses" element={<Courses />} />
+        <Route path="/courses" element={<Courses />} />
 
         <Route
-          path="courses/:id"
+          path="/courses/:id"
           element={
             <PrivateRoute redirectMessage="You must log in to enroll.">
               <CourseDetail />
@@ -39,7 +39,7 @@ function App() {
         />
 
         <Route
-          path="dashboard"
+          path="/dashboard"
           element={
             <PrivateRoute redirectMessage="You must log in to access the dashboard.">
               <Dashboard />
@@ -48,7 +48,7 @@ function App() {
         />
       </Route>
 
-      <Route path="*" element={<NotFound />} />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 }

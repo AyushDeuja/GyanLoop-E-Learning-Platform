@@ -8,12 +8,17 @@ import {
   setEnrollmentsForUser,
 } from "../redux/enrollmentSlice";
 
+const emptyArray = []; // Step 1: stable empty array reference
+
 const Courses = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const enrolledCourses = useSelector(
-    (state) => state.enrollment.enrolledByUser[user?.email] || []
-  );
+
+  // Step 2: use stable empty array for default
+  const enrolledCourses = useSelector((state) => {
+    const userEnrollments = state.enrollment.enrolledByUser[user?.email];
+    return userEnrollments || emptyArray;
+  });
 
   const [filters, setFilters] = useState({
     search: "",
