@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Courses from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
 import CourseDetail from "./pages/CourseDetail";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -47,7 +48,7 @@ function App() {
         />
       </Route>
 
-      <Route> </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
