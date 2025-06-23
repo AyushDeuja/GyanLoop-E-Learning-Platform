@@ -2,7 +2,14 @@ import React from "react";
 import { useParams, useNavigate } from "react-router";
 import { mockCourses } from "../helpers/mockCourses";
 import CustomButton from "../components/CustomButton";
-import { Clock, Users, Star, CheckCircle, Circle } from "lucide-react";
+import {
+  Clock,
+  Users,
+  Star,
+  CheckCircle,
+  Circle,
+  ChevronDown,
+} from "lucide-react";
 import { Line } from "rc-progress";
 
 const CourseDetail = () => {
@@ -98,10 +105,11 @@ const CourseDetail = () => {
                     <Circle className="text-gray-400 w-5 h-5" />
                   )}
                   {module.title}
+                  <ChevronDown className="ml-auto w-5 h-5 text-gray-400" />
                 </summary>
                 <ul className="text-sm text-gray-300 mt-3 space-y-2">
                   {module.lessons.map((lesson) => (
-                    <li key={lesson.id} className="flex items-center gap-2">
+                    <li key={lesson.id} className="flex items-center gap-4 p-2">
                       {lesson.isCompleted ? (
                         <CheckCircle className="text-green-400 w-4 h-4" />
                       ) : (
