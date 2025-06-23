@@ -33,7 +33,6 @@ const CourseDetail = () => {
 
   return (
     <div className="text-white flex flex-col lg:flex-row gap-8 p-8  min-h-screen">
-      {/* Left Section */}
       <div className="flex-1 space-y-6">
         <h1 className="text-3xl font-bold">{course.title}</h1>
         <p className="text-gray-400 text-lg">{course.description}</p>

@@ -10,8 +10,8 @@ export default function Modal({
 }) {
   return (
     <div
-      className={`w-screen h-screen bg-[#00000079] flex justify-center items-center absolute inset-0 z-2 ${
-        isModalOpen ? "block" : "hidden"
+      className={`fixed inset-0 z-50 bg-[#00000079] flex justify-center items-center ${
+        isModalOpen ? "flex" : "hidden"
       }`}
     >
       <div className="w-[600px] h-[200px] bg-white rounded p-4 flex flex-col justify-between">

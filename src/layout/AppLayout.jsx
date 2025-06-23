@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 
 const AppLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
+    <div className="min-h-screen  flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
       <NavBar />
 
       <main className="flex-grow px-20 ">
