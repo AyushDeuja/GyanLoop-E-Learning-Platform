@@ -18,7 +18,12 @@ const CourseDetail = () => {
   const course = mockCourses.find((c) => c.id.toString() === id);
   console.log(course);
 
-  if (!course) return <div className="text-white">Course not found</div>;
+  if (!course)
+    return (
+      <div className="flex items-center justify-center h-[80vh] text-white text-5xl">
+        Course not found
+      </div>
+    );
 
   const totalLessons = course.modules.reduce(
     (acc, module) => acc + module.lessons.length,

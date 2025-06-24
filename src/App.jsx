@@ -8,6 +8,7 @@ import Courses from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
 import CourseDetail from "./pages/CourseDetail";
 import NotFound from "./pages/NotFound";
+import Lessons from "./pages/Lessons";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -34,6 +35,15 @@ function App() {
           element={
             <PrivateRoute redirectMessage="You must log in to enroll.">
               <CourseDetail />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/courses/:id/lessons"
+          element={
+            <PrivateRoute redirectMessage="You must log in to view lessons.">
+              <Lessons />
             </PrivateRoute>
           }
         />
