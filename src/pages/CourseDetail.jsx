@@ -36,6 +36,13 @@ const CourseDetail = () => {
   );
   const progress = Math.floor((completedLessons / totalLessons) * 100);
 
+  // Flatten all lessons into one array
+  const allLessons = course.modules.flatMap((module) => module.lessons);
+
+  // Find the first incomplete lesson or fallback to the first lesson
+  const firstIncompleteLesson =
+    allLessons.find((lesson) => !lesson.isCompleted) || allLessons[0];
+
   return (
     <div className="text-white flex flex-col lg:flex-row gap-8 p-8  min-h-screen">
       <div className="flex-1 space-y-6">
@@ -143,7 +150,9 @@ const CourseDetail = () => {
         <CustomButton
           label="Continue Learning"
           className="mb-3 bg-white !text-black"
-          onClick={() => navigate(`/courses/${id}`)}
+          onClick={() =>
+            navigate(`/courses/${id}/lessons/${firstIncompleteLesson.id}`)
+          }
         />
         <CustomButton
           label="View in Dashboard"
