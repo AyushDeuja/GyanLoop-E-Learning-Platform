@@ -40,7 +40,7 @@ function App() {
         />
 
         <Route
-          path="/courses/:id/lessons"
+          path="/courses/:id/lessons/:lessonId"
           element={
             <PrivateRoute redirectMessage="You must log in to view lessons.">
               <LessonPage />
