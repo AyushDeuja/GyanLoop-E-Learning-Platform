@@ -8,7 +8,7 @@ import Courses from "./pages/Courses";
 import Dashboard from "./pages/Dashboard";
 import CourseDetail from "./pages/CourseDetail";
 import NotFound from "./pages/NotFound";
-import Lessons from "./pages/Lessons";
+import LessonPage from "./pages/LessonPage";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -43,7 +43,7 @@ function App() {
           path="/courses/:id/lessons"
           element={
             <PrivateRoute redirectMessage="You must log in to view lessons.">
-              <Lessons />
+              <LessonPage />
             </PrivateRoute>
           }
         />
