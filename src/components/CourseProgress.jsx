@@ -1,60 +1,55 @@
 import React from "react";
 import { Check } from "lucide-react";
+import { useNavigate } from "react-router";
 
-const ProgressSection = ({ title, lessons }) => {
-  return (
-    <div className="mb-6">
-      <h3 className="text-white font-semibold mb-3">{title}</h3>
-      <div className="space-y-2">
-        {lessons.map((lesson, index) => (
-          <div
-            key={index}
-            className={`p-3 rounded-lg flex items-center justify-between cursor-pointer transition-colors ${
-              lesson.completed
-                ? "bg-gray-800 border border-gray-700"
-                : lesson.title === "Introduction to React"
-                ? "bg-blue-600 border border-blue-500"
-                : "bg-gray-800 hover:bg-gray-700 border border-gray-700"
-            }`}
-          >
-            <span
-              className={`text-sm ${
-                lesson.completed ? "text-gray-300" : "text-white"
-              }`}
-            >
-              {lesson.title}
-            </span>
-            {lesson.completed && <Check size={16} className="text-green-400" />}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+const CourseProgress = ({ course, activeLessonId }) => {
+  const navigate = useNavigate();
 
-const CourseProgress = () => {
-  const fundamentalsLessons = [
-    { title: "Introduction to React", completed: false },
-    { title: "Components and JSX", completed: true },
-  ];
-
-  const quizLessons = [{ title: "React Basics Quiz", completed: false }];
-
-  const stateAndPropsLessons = [
-    { title: "Understanding State", completed: false },
-    { title: "Props Deep Dive", completed: false },
-  ];
+  if (!course) return <div className="text-white">No course data</div>;
 
   return (
-    <div className="bg-gray-900 p-6 rounded-lg h-fit">
+    <div className="bg-gray-900 p-6 my-41 rounded-lg h-fit">
       <h2 className="text-white text-xl font-bold mb-6">Course Progress</h2>
 
-      <ProgressSection
-        title="React Fundamentals"
-        lessons={fundamentalsLessons}
-      />
-      <ProgressSection title="" lessons={quizLessons} />
-      <ProgressSection title="State and Props" lessons={stateAndPropsLessons} />
+      {course.modules.map((module) => (
+        <div key={module.id} className="mb-6">
+          <h3 className="text-white font-semibold mb-3">{module.title}</h3>
+          <div className="space-y-2">
+            {module.lessons.map((lesson) => {
+              const isActive = lesson.id === activeLessonId;
+
+              return (
+                <div
+                  key={lesson.id}
+                  onClick={() =>
+                    navigate(`/courses/${course.id}/lessons/${lesson.id}`)
+                  }
+                  className={`p-3 rounded-lg flex items-center justify-between cursor-pointer transition-colors
+                    ${
+                      lesson.isCompleted
+                        ? "bg-gray-800 border border-gray-700"
+                        : "bg-gray-800 hover:bg-gray-700 border border-gray-700"
+                    }
+                    ${isActive ? "border-blue-500 bg-blue-600" : ""}
+                  `}
+                  title={lesson.title}
+                >
+                  <span
+                    className={`text-sm ${
+                      lesson.isCompleted ? "text-gray-300" : "text-white"
+                    }`}
+                  >
+                    {lesson.title}
+                  </span>
+                  {lesson.isCompleted && (
+                    <Check size={16} className="text-green-400" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
