@@ -2,7 +2,7 @@ const VideoPlayer = ({ videoUrl }) => {
   if (!videoUrl)
     return (
       <div className="bg-gray-800 rounded-lg overflow-hidden">
-        <div className="aspect-video bg-gray-900 flex items-center justify-center relative">
+        <div className="aspect-video bg-black flex items-center justify-center relative">
           <div className="text-center">
             <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mb-4 mx-auto">
               <span className="text-white text-2xl font-bold">!</span>
