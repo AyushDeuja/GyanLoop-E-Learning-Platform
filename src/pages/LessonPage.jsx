@@ -1,34 +1,58 @@
-import React from "react";
-import { useParams } from "react-router";
-import { mockCourses } from "../helpers/mockCourses";
 import VideoPlayer from "../components/VideoPlayer";
 import CourseProgress from "../components/CourseProgress";
+import CustomButton from "../components/CustomButton";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const LessonPage = () => {
-  const { courseId, lessonId } = useParams();
-
-  const course = mockCourses.find((c) => c.id === courseId);
-  const module = course?.modules.find((m) =>
-    m.lessons.some((l) => l.id === lessonId)
-  );
-  const lesson = module?.lessons.find((l) => l.id === lessonId);
-
-  if (!course || !module || !lesson)
-    return <div className="text-white p-6">Lesson not found</div>;
-
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Main Content */}
-        <div className="lg:col-span-2">
-          <h1 className="text-2xl font-bold mb-2">{lesson.title}</h1>
-          <p className="text-gray-400 mb-4">{course.title}</p>
-          <VideoPlayer videoUrl={lesson.videoUrl} />
-        </div>
+      <div className="max-w-7xl mx-auto p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-2">
+            {/* Lesson Header */}
+            <div className="mb-6">
+              <button className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4">
+                <ArrowLeft size={20} />
+                <span>Back to Course</span>
+              </button>
 
-        {/* Sidebar */}
-        <div className="lg:col-span-1">
-          <CourseProgress modules={course.modules} />
+              <div>
+                <h1 className="text-white text-2xl font-bold mb-2">
+                  Introduction to React
+                </h1>
+                <p className="text-gray-400 mb-4">Complete React Development</p>
+
+                <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <span>Duration: 15 min</span>
+                  <span>Type: video</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span className="text-green-400">Completed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <VideoPlayer />
+
+            {/* Lesson Navigation */}
+            <div className="mt-6 flex justify-end">
+              <div className="w-48">
+                <CustomButton
+                  label="Next Lesson"
+                  buttonIcon={<ArrowRight size={16} />}
+                  className="bg-white text-gray-900 hover:bg-gray-100"
+                  onClick={() => console.log("Next lesson clicked")}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <CourseProgress />
+          </div>
         </div>
       </div>
     </div>
