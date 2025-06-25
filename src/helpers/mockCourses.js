@@ -105,7 +105,8 @@ export const mockCourses = [
             title: "What is MERN Stack?",
             type: "video",
             duration: "12 min",
-            videoUrl: "https://www.youtube.com/embed/Ke90Tje7VS0",
+            videoUrl:
+              "https://www.youtube.com/embed/O3BUHwfHf84?si=motFAD4PLHCAifvg",
             isCompleted: true,
           },
           {
