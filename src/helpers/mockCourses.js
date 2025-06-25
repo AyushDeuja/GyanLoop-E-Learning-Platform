@@ -104,7 +104,7 @@ export const mockCourses = [
             id: "l1",
             title: "What is MERN Stack?",
             type: "video",
-            duration: "12 min",
+            duration: "146 min",
             videoUrl:
               "https://www.youtube.com/embed/O3BUHwfHf84?si=motFAD4PLHCAifvg",
             isCompleted: true,
@@ -168,7 +168,7 @@ export const mockCourses = [
             id: "l1",
             title: "Installing Python",
             type: "video",
-            duration: "10 min",
+            duration: "266 min",
             videoUrl: "https://www.youtube.com/embed/rfscVS0vtbw",
             isCompleted: true,
           },
