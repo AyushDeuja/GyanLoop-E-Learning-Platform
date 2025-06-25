@@ -367,7 +367,7 @@ export const mockCourses = [
             id: "l1",
             title: "SELECT Queries",
             type: "video",
-            duration: "20 min",
+            duration: "62 min",
             videoUrl: "https://www.youtube.com/embed/9Pzj7Aj25lw",
             isCompleted: true,
           },
