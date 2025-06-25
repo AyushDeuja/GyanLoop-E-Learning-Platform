@@ -8,7 +8,7 @@ const CourseProgress = ({ course, activeLessonId }) => {
   if (!course) return <div className="text-white">No course data</div>;
 
   return (
-    <div className="bg-gray-900 p-6 my-41 rounded-lg h-fit">
+    <div className="bg-gray-950 p-6 my-41 rounded-lg h-fit">
       <h2 className="text-white text-xl font-bold mb-6">Course Progress</h2>
 
       {course.modules.map((module) => (

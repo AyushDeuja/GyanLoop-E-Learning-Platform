@@ -9,7 +9,6 @@ const LessonPage = () => {
   const { id: courseId, lessonId } = useParams();
   const navigate = useNavigate();
 
-  // Find course
   const course = mockCourses.find((c) => c.id === courseId);
 
   if (!course) {
@@ -20,7 +19,6 @@ const LessonPage = () => {
     );
   }
 
-  // Find module that contains the lesson
   const module = course.modules.find((m) =>
     m.lessons.some((l) => l.id === lessonId)
   );
@@ -33,10 +31,8 @@ const LessonPage = () => {
     );
   }
 
-  // Find the lesson
   const lesson = module.lessons.find((l) => l.id === lessonId);
 
-  // Find next lesson for navigation (simple linear next)
   const allLessons = course.modules.flatMap((m) => m.lessons);
   const currentIndex = allLessons.findIndex((l) => l.id === lessonId);
   const nextLesson = allLessons[currentIndex + 1];
@@ -45,9 +41,7 @@ const LessonPage = () => {
     <div className="min-h-screen bg-[#0f172a] text-white">
       <div className="max-w-7xl mx-auto p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2">
-            {/* Lesson Header */}
             <div className="mb-6">
               <button
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4"
@@ -84,13 +78,11 @@ const LessonPage = () => {
               </div>
             </div>
 
-            {/* Video Player */}
             <VideoPlayer videoUrl={lesson.videoUrl} />
 
-            {/* Lesson Navigation */}
             <div className="mt-6 flex justify-end">
               <div className="w-48">
-                {nextLesson ? (
+                {nextLesson && (
                   <CustomButton
                     label="Next Lesson"
                     buttonIcon={<ArrowRight size={16} />}
@@ -99,14 +91,11 @@ const LessonPage = () => {
                       navigate(`/courses/${courseId}/lessons/${nextLesson.id}`)
                     }
                   />
-                ) : (
-                  <span className="text-gray-400">No more lessons</span>
                 )}
               </div>
             </div>
           </div>
 
-          {/* Sidebar */}
           <div className="lg:col-span-1">
             <CourseProgress course={course} activeLessonId={lessonId} />
           </div>
