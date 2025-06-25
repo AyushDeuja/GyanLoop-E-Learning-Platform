@@ -26,17 +26,22 @@ const CourseProgress = ({ course, activeLessonId }) => {
                   }
                   className={`p-3 rounded-lg flex items-center justify-between cursor-pointer transition-colors
                     ${
-                      lesson.isCompleted
+                      isActive
+                        ? "bg-blue-600 border border-blue-500"
+                        : lesson.isCompleted
                         ? "bg-gray-800 border border-gray-700"
                         : "bg-gray-800 hover:bg-gray-700 border border-gray-700"
                     }
-                    ${isActive ? "border-blue-500 bg-blue-600" : ""}
                   `}
                   title={lesson.title}
                 >
                   <span
-                    className={`text-sm ${
-                      lesson.isCompleted ? "text-gray-300" : "text-white"
+                    className={`text-sm truncate ${
+                      isActive
+                        ? "text-white font-semibold"
+                        : lesson.isCompleted
+                        ? "text-gray-300"
+                        : "text-white"
                     }`}
                   >
                     {lesson.title}
