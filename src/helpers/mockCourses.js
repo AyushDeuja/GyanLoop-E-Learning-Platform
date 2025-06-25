@@ -302,8 +302,9 @@ export const mockCourses = [
             id: "l1",
             title: "Array Basics",
             type: "video",
-            duration: "17 min",
-            videoUrl: "https://www.youtube.com/embed/Wo8z3TFd3nw",
+            duration: "8 min",
+            videoUrl:
+              "https://www.youtube.com/embed/0OK-kbu9Cwo?si=mylEh9xw9z49Ab4M",
             isCompleted: false,
           },
           {
