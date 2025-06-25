@@ -24,16 +24,18 @@ export const mockCourses = [
             id: "l1",
             title: "Introduction to React",
             type: "video",
-            duration: "15 min",
-            videoUrl: "https://www.youtube.com/embed/dGcsHMXbSOA",
+            duration: "9.5 min",
+            videoUrl:
+              "https://www.youtube.com/embed/QFaFIcGhPoM?si=UhID0dhYRpYtKI1h",
             isCompleted: true,
           },
           {
             id: "l2",
             title: "Components and JSX",
             type: "video",
-            duration: "20 min",
-            videoUrl: "https://www.youtube.com/embed/dGcsHMXbSOA",
+            duration: "5 min",
+            videoUrl:
+              "https://www.youtube.com/embed/Y2hgEGPzTZY?si=tTGxoH-sMm2242aS",
             isCompleted: true,
           },
           {
