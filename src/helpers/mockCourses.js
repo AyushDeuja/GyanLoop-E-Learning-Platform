@@ -233,8 +233,9 @@ export const mockCourses = [
             id: "l1",
             title: "Design Thinking",
             type: "video",
-            duration: "25 min",
-            videoUrl: "https://www.youtube.com/embed/_OcozA0MDrM",
+            duration: "10 min",
+            videoUrl:
+              "https://www.youtube.com/embed/gHGN6hs2gZY?si=-ypWQ-8SUUhzGsQB",
             isCompleted: false,
           },
           {
