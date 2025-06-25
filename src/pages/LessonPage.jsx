@@ -36,6 +36,7 @@ const LessonPage = () => {
   const allLessons = course.modules.flatMap((m) => m.lessons);
   const currentIndex = allLessons.findIndex((l) => l.id === lessonId);
   const nextLesson = allLessons[currentIndex + 1];
+  const previousLesson = allLessons[currentIndex - 1];
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-white">
@@ -48,7 +49,7 @@ const LessonPage = () => {
                 onClick={() => navigate(`/courses/${courseId}`)}
               >
                 <ArrowLeft size={20} />
-                <span>Back </span>
+                <span>Back</span>
               </button>
 
               <div>
@@ -80,13 +81,28 @@ const LessonPage = () => {
 
             <VideoPlayer videoUrl={lesson.videoUrl} />
 
-            <div className="mt-6 flex justify-end">
+            <div className="mt-6 flex justify-between">
               <div className="w-48">
+                {previousLesson && (
+                  <CustomButton
+                    label="Previous Lesson"
+                    buttonIcon={<ArrowLeft size={16} />}
+                    className="!bg-gray-800  "
+                    onClick={() =>
+                      navigate(
+                        `/courses/${courseId}/lessons/${previousLesson.id}`
+                      )
+                    }
+                  />
+                )}
+              </div>
+
+              <div className="w-48 text-right">
                 {nextLesson && (
                   <CustomButton
                     label="Next Lesson"
                     buttonIcon={<ArrowRight size={16} />}
-                    className="bg-white text-gray-900 hover:bg-gray-100"
+                    className="bg-white !text-black "
                     onClick={() =>
                       navigate(`/courses/${courseId}/lessons/${nextLesson.id}`)
                     }
