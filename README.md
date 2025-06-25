@@ -2,7 +2,7 @@
 
 ## Layout
 
-- App Layout - Sidebar and content body
+- App Layout - Navbar and content body and footer
 
 ## Pages
 
