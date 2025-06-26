@@ -4,6 +4,7 @@ import { mockCourses } from "../helpers/mockCourses";
 import VideoPlayer from "../components/VideoPlayer";
 import CourseProgress from "../components/CourseProgress";
 import CustomButton from "../components/CustomButton";
+import QuizLesson from "../components/QuizLesson";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const LessonPage = () => {
@@ -19,7 +20,6 @@ const LessonPage = () => {
   useEffect(() => {
     if (!course) return;
 
-    // Auto-redirect to first lesson if no lessonId is provided
     if (!lessonId) {
       const firstLesson = course.modules[0]?.lessons[0];
       if (firstLesson) {
@@ -28,7 +28,6 @@ const LessonPage = () => {
         });
       }
     } else {
-      // Deep copy course data for local state
       setLocalCourse(JSON.parse(JSON.stringify(course)));
     }
   }, [courseId, lessonId]);
@@ -45,13 +44,11 @@ const LessonPage = () => {
     return null;
   }
 
-  // Flatten lessons for navigation
   const allLessons = localCourse.modules.flatMap((m) => m.lessons);
   const currentIndex = allLessons.findIndex((l) => l.id === lessonId);
   const nextLesson = allLessons[currentIndex + 1];
   const previousLesson = allLessons[currentIndex - 1];
 
-  // Get current lesson
   const module = localCourse.modules.find((m) =>
     m.lessons.some((l) => l.id === lessonId)
   );
@@ -65,8 +62,7 @@ const LessonPage = () => {
     );
   }
 
-  // Mark lesson as completed when video ends
-  const handleVideoEnd = () => {
+  const markLessonCompleted = () => {
     setLocalCourse((prevCourse) => {
       const updated = JSON.parse(JSON.stringify(prevCourse));
       for (const m of updated.modules) {
@@ -121,11 +117,15 @@ const LessonPage = () => {
               </div>
             </div>
 
-            <VideoPlayer
-              key={lesson.id}
-              videoUrl={lesson.videoUrl}
-              onEnd={handleVideoEnd}
-            />
+            {lesson.type === "video" ? (
+              <VideoPlayer
+                key={lesson.id}
+                videoUrl={lesson.videoUrl}
+                onEnd={markLessonCompleted}
+              />
+            ) : (
+              <QuizLesson lesson={lesson} onComplete={markLessonCompleted} />
+            )}
 
             <div className="mt-6 flex justify-between">
               <div className="w-48">

@@ -59,6 +59,15 @@ export const mockCourses = [
                   explanation:
                     "JSX stands for JavaScript XML and allows you to write HTML-like syntax in JavaScript.",
                 },
+                {
+                  id: "q1-2",
+                  type: "multiple-choice",
+                  question: "Which hook is used for managing state in React?",
+                  options: ["useFetch", "useEffect", "useState", "useReducer"],
+                  correctAnswer: 2,
+                  explanation:
+                    "`useState` is the primary hook to handle component state.",
+                },
               ],
             },
           },
@@ -170,23 +179,36 @@ export const mockCourses = [
             isCompleted: true,
           },
           {
-            id: "l2",
-            title: "Python Basics Quiz",
+            id: "l3",
+            title: "React Basics Quiz",
             type: "quiz",
-            duration: "8 min",
+            duration: "10 min",
             isCompleted: false,
             quiz: {
-              id: "q3",
+              id: "q1",
               questions: [
                 {
-                  id: "q3-1",
+                  id: "q1-1",
                   type: "multiple-choice",
-                  question:
-                    "Which keyword is used to define a function in Python?",
-                  options: ["func", "function", "def", "lambda"],
+                  question: "What does JSX stand for?",
+                  options: [
+                    "JavaScript XML",
+                    "JavaScript Extension",
+                    "Java Syntax Extension",
+                    "Just Syntax Extension",
+                  ],
+                  correctAnswer: 0,
+                  explanation:
+                    "JSX stands for JavaScript XML and allows you to write HTML-like syntax in JavaScript.",
+                },
+                {
+                  id: "q1-2",
+                  type: "multiple-choice",
+                  question: "Which hook is used for managing state in React?",
+                  options: ["useFetch", "useEffect", "useState", "useReducer"],
                   correctAnswer: 2,
                   explanation:
-                    "In Python, functions are defined using the `def` keyword.",
+                    "`useState` is the primary hook to handle component state.",
                 },
               ],
             },
