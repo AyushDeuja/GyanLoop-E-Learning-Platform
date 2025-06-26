@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CheckCircle, XCircle } from "lucide-react";
+import { toast } from "react-toastify";
 
 const QuizLesson = ({ lesson, onComplete }) => {
   const questions = lesson.quiz.questions;
@@ -15,8 +16,8 @@ const QuizLesson = ({ lesson, onComplete }) => {
     if (Object.keys(answers).length < questions.length) return;
 
     setSubmitted(true);
+    toast.success("Quiz submitted successfully!");
 
-    // Check if all answers are correct
     const allCorrect = questions.every(
       (q) => answers[q.id] === q.correctAnswer
     );
