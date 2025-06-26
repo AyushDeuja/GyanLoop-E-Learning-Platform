@@ -25,8 +25,7 @@ export const mockCourses = [
             title: "Introduction to React",
             type: "video",
             duration: "9.5 min",
-            videoUrl:
-              "https://www.youtube.com/embed/QFaFIcGhPoM?si=UhID0dhYRpYtKI1h",
+            videoUrl: "/public/Episode 01-Inception.mp4",
             isCompleted: true,
           },
           {
@@ -34,8 +33,7 @@ export const mockCourses = [
             title: "Components and JSX",
             type: "video",
             duration: "5 min",
-            videoUrl:
-              "https://www.youtube.com/embed/Y2hgEGPzTZY?si=tTGxoH-sMm2242aS",
+            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
             isCompleted: true,
           },
           {
@@ -105,8 +103,7 @@ export const mockCourses = [
             title: "What is MERN Stack?",
             type: "video",
             duration: "146 min",
-            videoUrl:
-              "https://www.youtube.com/embed/O3BUHwfHf84?si=motFAD4PLHCAifvg",
+            videoUrl: "/public/Episode 01-Inception.mp4",
             isCompleted: true,
           },
           {
@@ -169,7 +166,7 @@ export const mockCourses = [
             title: "Installing Python",
             type: "video",
             duration: "266 min",
-            videoUrl: "https://www.youtube.com/embed/rfscVS0vtbw",
+            videoUrl: "/public/Episode 01-Inception.mp4",
             isCompleted: true,
           },
           {
@@ -234,8 +231,7 @@ export const mockCourses = [
             title: "Design Thinking",
             type: "video",
             duration: "10 min",
-            videoUrl:
-              "https://www.youtube.com/embed/gHGN6hs2gZY?si=-ypWQ-8SUUhzGsQB",
+            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
             isCompleted: false,
           },
           {
@@ -303,8 +299,7 @@ export const mockCourses = [
             title: "Array Basics",
             type: "video",
             duration: "8 min",
-            videoUrl:
-              "https://www.youtube.com/embed/0OK-kbu9Cwo?si=mylEh9xw9z49Ab4M",
+            videoUrl: "/public/Episode 01-Inception.mp4",
             isCompleted: false,
           },
           {
@@ -368,7 +363,7 @@ export const mockCourses = [
             title: "SELECT Queries",
             type: "video",
             duration: "62 min",
-            videoUrl: "https://www.youtube.com/embed/9Pzj7Aj25lw",
+            videoUrl: "/public/Episode 01-Inception.mp4",
             isCompleted: true,
           },
           {

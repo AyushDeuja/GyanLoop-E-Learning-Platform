@@ -36,17 +36,13 @@ const CourseDetail = () => {
   );
   const progress = Math.floor((completedLessons / totalLessons) * 100);
 
-  // Flatten all lessons into one array
   const allLessons = course.modules.flatMap((module) => module.lessons);
 
-  // Find the first incomplete lesson or fallback to the first lesson
-  const firstIncompleteLesson =
-    allLessons.find((lesson) => !lesson.isCompleted) || allLessons[0];
+  const firstLesson = allLessons[0];
 
   return (
     <div className="max-w-7xl mx-auto text-white flex flex-col lg:flex-row gap-8 p-4 md:p-8 min-h-screen bg-[#0f172a]">
       <div className="absolute">
-        {/* Back button */}
         <button
           className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4"
           onClick={() => navigate(`/courses`)}
@@ -56,7 +52,6 @@ const CourseDetail = () => {
         </button>
       </div>
 
-      {/* Left: Course Info */}
       <div className="flex-1 space-y-6 pt-10">
         <h1 className="text-3xl font-bold">{course.title}</h1>
         <p className="text-gray-400 text-lg">{course.description}</p>
@@ -95,14 +90,12 @@ const CourseDetail = () => {
           </div>
         </div>
 
-        {/* Course Content */}
         <div className="pt-6">
           <h2 className="text-xl font-bold">Course Content</h2>
           <p className="text-sm text-gray-400">
             {course.modules.length} modules • {totalLessons} lessons
           </p>
 
-          {/* Progress Bar */}
           <div className="mt-2">
             <p className="text-sm text-gray-400 mb-1">Course Progress</p>
             <Line
@@ -117,7 +110,6 @@ const CourseDetail = () => {
             </p>
           </div>
 
-          {/* Modules */}
           <div className="mt-4 space-y-3">
             {course.modules.map((module) => (
               <details
@@ -157,7 +149,6 @@ const CourseDetail = () => {
         </div>
       </div>
 
-      {/* Right: Sidebar */}
       <div className="w-full lg:w-[320px] bg-[#111827] p-6 rounded-xl shadow-md h-fit">
         <img
           src={course.image}
@@ -169,9 +160,7 @@ const CourseDetail = () => {
         <CustomButton
           label="Continue Learning"
           className="mb-3 bg-white !text-black"
-          onClick={() =>
-            navigate(`/courses/${id}/lessons/${firstIncompleteLesson.id}`)
-          }
+          onClick={() => navigate(`/courses/${id}/lessons/${firstLesson.id}`)}
         />
         <CustomButton
           label="View in Dashboard"

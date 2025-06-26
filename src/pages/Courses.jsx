@@ -51,8 +51,7 @@ const Courses = () => {
   const filteredCourses = mockCourses.filter((course) => {
     const matchesSearch =
       course.title.toLowerCase().includes(filters.search.toLowerCase()) ||
-      course.instructor.toLowerCase().includes(filters.search.toLowerCase()) ||
-      course.description.toLowerCase().includes(filters.search.toLowerCase());
+      course.instructor.toLowerCase().includes(filters.search.toLowerCase());
 
     const matchesCategory = filters.category
       ? course.category === filters.category
@@ -84,18 +83,22 @@ const Courses = () => {
       />
 
       <div className="flex flex-wrap gap-8 my-5">
-        {filteredCourses.map((course) => {
-          const isEnrolled = enrolledCourses.includes(course.id);
-          return (
-            <CourseCard
-              key={course.id}
-              id={course.id}
-              {...course}
-              isEnrolled={isEnrolled}
-              onEnroll={() => handleEnroll(course.id)}
-            />
-          );
-        })}
+        {filteredCourses.length === 0 ? (
+          <p className="text-gray-400 text-xl">No courses found.</p>
+        ) : (
+          filteredCourses.map((course) => {
+            const isEnrolled = enrolledCourses.includes(course.id);
+            return (
+              <CourseCard
+                key={course.id}
+                id={course.id}
+                {...course}
+                isEnrolled={isEnrolled}
+                onEnroll={() => handleEnroll(course.id)}
+              />
+            );
+          })
+        )}
       </div>
     </div>
   );

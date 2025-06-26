@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { mockCourses } from "../helpers/mockCourses";
 import VideoPlayer from "../components/VideoPlayer";
@@ -6,10 +7,31 @@ import CustomButton from "../components/CustomButton";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const LessonPage = () => {
-  const { id: courseId, lessonId } = useParams();
+  const params = useParams();
   const navigate = useNavigate();
+  const courseId = params.id;
+  const lessonId = params.lessonId;
+
+  const [localCourse, setLocalCourse] = useState(null);
 
   const course = mockCourses.find((c) => c.id === courseId);
+
+  useEffect(() => {
+    if (!course) return;
+
+    // Auto-redirect to first lesson if no lessonId is provided
+    if (!lessonId) {
+      const firstLesson = course.modules[0]?.lessons[0];
+      if (firstLesson) {
+        navigate(`/courses/${courseId}/lessons/${firstLesson.id}`, {
+          replace: true,
+        });
+      }
+    } else {
+      // Deep copy course data for local state
+      setLocalCourse(JSON.parse(JSON.stringify(course)));
+    }
+  }, [courseId, lessonId]);
 
   if (!course) {
     return (
@@ -19,11 +41,23 @@ const LessonPage = () => {
     );
   }
 
-  const module = course.modules.find((m) =>
+  if (!lessonId || !localCourse) {
+    return null;
+  }
+
+  // Flatten lessons for navigation
+  const allLessons = localCourse.modules.flatMap((m) => m.lessons);
+  const currentIndex = allLessons.findIndex((l) => l.id === lessonId);
+  const nextLesson = allLessons[currentIndex + 1];
+  const previousLesson = allLessons[currentIndex - 1];
+
+  // Get current lesson
+  const module = localCourse.modules.find((m) =>
     m.lessons.some((l) => l.id === lessonId)
   );
+  const lesson = module?.lessons.find((l) => l.id === lessonId);
 
-  if (!module) {
+  if (!lesson) {
     return (
       <div className="flex items-center justify-center h-screen text-white text-3xl">
         Lesson not found
@@ -31,12 +65,20 @@ const LessonPage = () => {
     );
   }
 
-  const lesson = module.lessons.find((l) => l.id === lessonId);
-
-  const allLessons = course.modules.flatMap((m) => m.lessons);
-  const currentIndex = allLessons.findIndex((l) => l.id === lessonId);
-  const nextLesson = allLessons[currentIndex + 1];
-  const previousLesson = allLessons[currentIndex - 1];
+  // Mark lesson as completed when video ends
+  const handleVideoEnd = () => {
+    setLocalCourse((prevCourse) => {
+      const updated = JSON.parse(JSON.stringify(prevCourse));
+      for (const m of updated.modules) {
+        const found = m.lessons.find((l) => l.id === lessonId);
+        if (found) {
+          found.isCompleted = true;
+          break;
+        }
+      }
+      return updated;
+    });
+  };
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-white">
@@ -56,7 +98,7 @@ const LessonPage = () => {
                 <h1 className="text-white text-2xl font-bold mb-2">
                   {lesson.title}
                 </h1>
-                <p className="text-gray-400 mb-4">{course.title}</p>
+                <p className="text-gray-400 mb-4">{localCourse.title}</p>
 
                 <div className="flex items-center gap-4 text-sm text-gray-400">
                   <span>Duration: {lesson.duration}</span>
@@ -79,7 +121,11 @@ const LessonPage = () => {
               </div>
             </div>
 
-            <VideoPlayer videoUrl={lesson.videoUrl} />
+            <VideoPlayer
+              key={lesson.id}
+              videoUrl={lesson.videoUrl}
+              onEnd={handleVideoEnd}
+            />
 
             <div className="mt-6 flex justify-between">
               <div className="w-48">
@@ -87,7 +133,7 @@ const LessonPage = () => {
                   <CustomButton
                     label="Previous Lesson"
                     buttonIcon={<ArrowLeft size={16} />}
-                    className="!bg-gray-800  "
+                    className="!bg-gray-800"
                     onClick={() =>
                       navigate(
                         `/courses/${courseId}/lessons/${previousLesson.id}`
@@ -100,9 +146,9 @@ const LessonPage = () => {
               <div className="w-48 text-right">
                 {nextLesson && (
                   <CustomButton
-                    label="Next Lesson"
+                    label="Next Lesson "
                     buttonIcon={<ArrowRight size={16} />}
-                    className="bg-white !text-black "
+                    className="bg-white !text-black"
                     onClick={() =>
                       navigate(`/courses/${courseId}/lessons/${nextLesson.id}`)
                     }
@@ -113,7 +159,7 @@ const LessonPage = () => {
           </div>
 
           <div className="lg:col-span-1">
-            <CourseProgress course={course} activeLessonId={lessonId} />
+            <CourseProgress course={localCourse} activeLessonId={lessonId} />
           </div>
         </div>
       </div>
