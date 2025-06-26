@@ -68,13 +68,42 @@ export const mockCourses = [
                   explanation:
                     "`useState` is the primary hook to handle component state.",
                 },
+                {
+                  id: "q1-3",
+                  type: "multiple-choice",
+                  question:
+                    "Which of the following is a valid React component?",
+                  options: [
+                    "function MyComponent() {}",
+                    "let MyComponent = ReactComponent()",
+                    "React.create(MyComponent)",
+                    "component React() {}",
+                  ],
+                  correctAnswer: 0,
+                  explanation:
+                    "Function components are declared using `function Name() {}`.",
+                },
+                {
+                  id: "q1-4",
+                  type: "multiple-choice",
+                  question:
+                    "How can you pass data from parent to child component?",
+                  options: [
+                    "Using Redux",
+                    "Using Props",
+                    "Using Context API",
+                    "Using useRef",
+                  ],
+                  correctAnswer: 1,
+                  explanation:
+                    "Props are the standard way to pass data from parent to child.",
+                },
               ],
             },
           },
         ],
       },
     ],
-
     reviews: [
       {
         id: "r1",
@@ -131,6 +160,25 @@ export const mockCourses = [
                   options: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
                   correctAnswer: 2,
                   explanation: "MongoDB is the NoSQL database used in MERN.",
+                },
+                {
+                  id: "q2-2",
+                  type: "multiple-choice",
+                  question: "Which part of MERN is used for backend routing?",
+                  options: ["MongoDB", "Express", "React", "Node.js"],
+                  correctAnswer: 1,
+                  explanation:
+                    "Express is a minimal Node.js web framework used for routing.",
+                },
+                {
+                  id: "q2-3",
+                  type: "multiple-choice",
+                  question:
+                    "Which of the following renders UI in the MERN stack?",
+                  options: ["MongoDB", "React", "Express", "Node.js"],
+                  correctAnswer: 1,
+                  explanation:
+                    "React is the frontend library responsible for UI rendering.",
                 },
               ],
             },
@@ -210,6 +258,36 @@ export const mockCourses = [
                   explanation:
                     "`useState` is the primary hook to handle component state.",
                 },
+                {
+                  id: "q1-3",
+                  type: "multiple-choice",
+                  question:
+                    "Which of the following is a valid React component?",
+                  options: [
+                    "function MyComponent() {}",
+                    "let MyComponent = ReactComponent()",
+                    "React.create(MyComponent)",
+                    "component React() {}",
+                  ],
+                  correctAnswer: 0,
+                  explanation:
+                    "Function components are declared using `function Name() {}`.",
+                },
+                {
+                  id: "q1-4",
+                  type: "multiple-choice",
+                  question:
+                    "How can you pass data from parent to child component?",
+                  options: [
+                    "Using Redux",
+                    "Using Props",
+                    "Using Context API",
+                    "Using useRef",
+                  ],
+                  correctAnswer: 1,
+                  explanation:
+                    "Props are the standard way to pass data from parent to child.",
+                },
               ],
             },
           },
@@ -278,6 +356,29 @@ export const mockCourses = [
                   correctAnswer: 1,
                   explanation: "UI stands for User Interface.",
                 },
+                {
+                  id: "q4-2",
+                  type: "multiple-choice",
+                  question: "Which tool is commonly used for UI design?",
+                  options: ["Photoshop", "Figma", "Excel", "Illustrator"],
+                  correctAnswer: 1,
+                  explanation:
+                    "Figma is widely used for UI/UX design due to its collaboration features.",
+                },
+                {
+                  id: "q4-3",
+                  type: "multiple-choice",
+                  question: "UX focuses on:",
+                  options: [
+                    "How the product looks",
+                    "Performance of code",
+                    "User's experience and satisfaction",
+                    "None of the above",
+                  ],
+                  correctAnswer: 2,
+                  explanation:
+                    "UX is about optimizing the user experience, not visuals or code.",
+                },
               ],
             },
           },
@@ -342,6 +443,25 @@ export const mockCourses = [
                   explanation:
                     "Stack follows Last-In-First-Out (LIFO) principle.",
                 },
+                {
+                  id: "q5-2",
+                  type: "multiple-choice",
+                  question:
+                    "What is the time complexity of binary search in a sorted array?",
+                  options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+                  correctAnswer: 1,
+                  explanation:
+                    "Binary search cuts the array in half each time, giving O(log n) complexity.",
+                },
+                {
+                  id: "q5-3",
+                  type: "multiple-choice",
+                  question: "Which data structure uses FIFO principle?",
+                  options: ["Stack", "Queue", "Graph", "Tree"],
+                  correctAnswer: 1,
+                  explanation:
+                    "Queue follows First-In-First-Out (FIFO) principle.",
+                },
               ],
             },
           },
@@ -405,6 +525,30 @@ export const mockCourses = [
                   correctAnswer: 2,
                   explanation:
                     "`SELECT` is used to fetch data from a database.",
+                },
+                {
+                  id: "q6-2",
+                  type: "multiple-choice",
+                  question: "Which clause is used to filter records?",
+                  options: ["ORDER BY", "WHERE", "GROUP BY", "HAVING"],
+                  correctAnswer: 1,
+                  explanation:
+                    "The WHERE clause filters records based on conditions.",
+                },
+                {
+                  id: "q6-3",
+                  type: "multiple-choice",
+                  question:
+                    "Which keyword is used to sort result in descending order?",
+                  options: [
+                    "SORT DESC",
+                    "ORDER DESC",
+                    "ORDER BY DESC",
+                    "DESC BY",
+                  ],
+                  correctAnswer: 2,
+                  explanation:
+                    "`ORDER BY column DESC` is used for descending order sorting.",
                 },
               ],
             },
