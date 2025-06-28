@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 import CertificateCard from "../components/CertificateCard";
 import DashboardCard from "../components/DashboardCard";
 import CustomButton from "../components/CustomButton";
+import { useNavigate } from "react-router";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
   const enrolledByUser = useSelector(
     (state) => state.enrollment.enrolledByUser
@@ -91,6 +93,7 @@ const Dashboard = () => {
           <CustomButton
             className="bg-white !text-black px-4 py-2 rounded-lg w-full"
             label={"View All Courses"}
+            onClick={() => navigate("/courses")}
           />
         </div>
       </div>
