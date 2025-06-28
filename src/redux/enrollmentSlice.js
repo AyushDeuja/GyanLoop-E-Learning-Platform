@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// load from localStorage if available
+const savedEnrollments = localStorage.getItem("enrolledByUser");
+
 const initialState = {
-  enrolledByUser: {},
+  enrolledByUser: savedEnrollments ? JSON.parse(savedEnrollments) : {},
 };
 
 const enrollmentSlice = createSlice({
@@ -11,6 +14,10 @@ const enrollmentSlice = createSlice({
     setEnrollmentsForUser: (state, action) => {
       const { email, courses } = action.payload;
       state.enrolledByUser[email] = courses;
+      localStorage.setItem(
+        "enrolledByUser",
+        JSON.stringify(state.enrolledByUser)
+      );
     },
     enrollInCourse: (state, action) => {
       const { email, courseId } = action.payload;
@@ -19,6 +26,10 @@ const enrollmentSlice = createSlice({
       }
       if (!state.enrolledByUser[email].includes(courseId)) {
         state.enrolledByUser[email].push(courseId);
+        localStorage.setItem(
+          "enrolledByUser",
+          JSON.stringify(state.enrolledByUser)
+        );
       }
     },
   },
