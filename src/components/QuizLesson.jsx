@@ -6,6 +6,7 @@ const QuizLesson = ({ lesson, onComplete }) => {
   const questions = lesson.quiz.questions;
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [score, setScore] = useState(null);
 
   const handleOptionSelect = (questionId, index) => {
     if (submitted) return;
@@ -13,15 +14,23 @@ const QuizLesson = ({ lesson, onComplete }) => {
   };
 
   const handleSubmit = () => {
-    if (Object.keys(answers).length < questions.length) return;
+    if (Object.keys(answers).length < questions.length) {
+      toast.error("Please answer all questions before submitting.");
+      return;
+    }
 
     setSubmitted(true);
     toast.success("Quiz submitted successfully!");
 
-    const allCorrect = questions.every(
+    const correctCount = questions.filter(
       (q) => answers[q.id] === q.correctAnswer
-    );
-    if (allCorrect) onComplete();
+    ).length;
+
+    setScore(correctCount);
+
+    if (correctCount === questions.length) {
+      onComplete();
+    }
   };
 
   return (
@@ -83,13 +92,19 @@ const QuizLesson = ({ lesson, onComplete }) => {
         );
       })}
 
-      {!submitted && (
+      {!submitted ? (
         <button
           onClick={handleSubmit}
           className="w-full mt-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition"
         >
           Submit Quiz
         </button>
+      ) : (
+        <div className="mt-6 p-4 rounded-lg bg-blue-800 border border-blue-600 text-center">
+          <p className="text-lg font-semibold text-white">
+            You got {score} out of {questions.length} correct!
+          </p>
+        </div>
       )}
     </div>
   );
