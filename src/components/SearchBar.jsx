@@ -5,7 +5,6 @@ const SearchBar = ({ search, category, level, onChange }) => {
   return (
     <div className="w-full px-4 md:px-0">
       <div className="w-full flex flex-col md:flex-row items-center gap-4">
-        {/* 🔍 Search Input */}
         <div className="flex items-center flex-1 bg-[#0f0f0f] border border-[#1f1f1f] rounded-md px-4 py-3 text-sm text-white">
           <Search className="w-4 h-4 mr-2 text-gray-400" />
           <input
