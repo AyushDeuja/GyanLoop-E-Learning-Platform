@@ -1,12 +1,19 @@
-import React from "react";
-import DashboardCard from "../components/DashoardCard";
-import CertificateCard from "../components/CertificateCard";
 import { mockCourses } from "../helpers/mockCourses";
 import { useSelector } from "react-redux";
+import CertificateCard from "../components/CertificateCard";
+import DashboardCard from "../components/DashboardCard";
 
 const Dashboard = () => {
-  const enrolledCourses = mockCourses.slice(0, 2);
   const user = useSelector((state) => state.auth.user);
+  const enrolledByUser = useSelector(
+    (state) => state.enrollment.enrolledByUser
+  );
+
+  const enrolledCourseIds = enrolledByUser[user.email] || [];
+  const enrolledCourses = mockCourses.filter((course) =>
+    enrolledCourseIds.includes(course.id)
+  );
+
   const completedCertificates = [
     {
       id: "c1",
@@ -19,7 +26,7 @@ const Dashboard = () => {
 
   return (
     <div className="p-6 text-white bg-gray-900 min-h-screen">
-      <h1 className="text-2xl font-bold">Welcome back, {user.name}</h1>
+      <h1 className="text-2xl font-bold">Welcome back, {user.name}!</h1>
       <p className="text-gray-400 mb-6">Continue your learning journey</p>
 
       <div className="grid grid-cols-4 gap-4 mb-8">
