@@ -9,13 +9,18 @@ const DashboardCard = ({
   progress,
   duration,
   courseId,
+  image,
   firstLessonId,
 }) => {
   const navigate = useNavigate();
   return (
     <div className="bg-gray-800 p-4 rounded-xl">
       <div className="flex items-center gap-4">
-        <div className="w-16 h-16 bg-gray-600 rounded-lg" />
+        <img
+          src={image}
+          alt={title}
+          className="w-16 h-16 object-cover rounded-lg"
+        />
         <div className="flex-1">
           <h3 className="font-semibold text-lg">{title}</h3>
           <p className="text-sm text-gray-400">by {instructor}</p>
