@@ -1,7 +1,20 @@
-import CertificateCard from "../components/CertificateCard";
+import React from "react";
 import DashboardCard from "../components/DashoardCard";
+import CertificateCard from "../components/CertificateCard";
+import { mockCourses } from "../helpers/mockCourses";
 
 const Dashboard = () => {
+  const enrolledCourses = mockCourses.slice(0, 2);
+  const completedCertificates = [
+    {
+      id: "c1",
+      courseId: "1",
+      title: "Complete React Development",
+      instructor: "Sarah Johnson",
+      date: "2/15/2024",
+    },
+  ];
+
   return (
     <div className="p-6 text-white bg-gray-900 min-h-screen">
       <h1 className="text-2xl font-bold">Welcome back, Alex Student!</h1>
@@ -10,7 +23,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-4 gap-4 mb-8">
         <div className="bg-gray-800 p-4 rounded-xl">
           <p>Enrolled Courses</p>
-          <h2 className="text-xl font-bold">2</h2>
+          <h2 className="text-xl font-bold">{enrolledCourses.length}</h2>
         </div>
         <div className="bg-gray-800 p-4 rounded-xl">
           <p>Completed Courses</p>
@@ -22,34 +35,45 @@ const Dashboard = () => {
         </div>
         <div className="bg-gray-800 p-4 rounded-xl">
           <p>Certificates</p>
-          <h2 className="text-xl font-bold">1</h2>
+          <h2 className="text-xl font-bold">{completedCertificates.length}</h2>
         </div>
       </div>
 
       <h2 className="text-xl font-semibold mb-4">My Courses</h2>
       <div className="grid grid-cols-2 gap-4 mb-8">
-        <DashboardCard
-          title="Complete React Development"
-          instructor="Sarah Johnson"
-          progress={45}
-          duration="24 hours"
-        />
-        <DashboardCard
-          title="Python for Data Science"
-          instructor="Dr. Michael Chen"
-          progress={20}
-          duration="18 hours"
-        />
+        {enrolledCourses.map((course) => (
+          <DashboardCard
+            key={course.id}
+            title={course.title}
+            instructor={course.instructor}
+            progress={Math.floor(
+              (course.modules.reduce((acc, module) => {
+                const total = module.lessons.length;
+                const completed = module.lessons.filter(
+                  (l) => l.isCompleted
+                ).length;
+                return acc + completed / total;
+              }, 0) /
+                course.modules.length) *
+                100
+            )}
+            duration={course.duration}
+            image={course.image}
+          />
+        ))}
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-gray-800 p-4 rounded-xl">
           <h3 className="text-lg font-semibold mb-2">Certificates</h3>
-          <CertificateCard
-            title="Complete React Development"
-            instructor="Sarah Johnson"
-            date="2/15/2024"
-          />
+          {completedCertificates.map((cert) => (
+            <CertificateCard
+              key={cert.id}
+              title={cert.title}
+              instructor={cert.instructor}
+              date={cert.date}
+            />
+          ))}
         </div>
         <div className="bg-gray-800 p-4 rounded-xl">
           <h3 className="text-lg font-semibold mb-2">Quick Actions</h3>
