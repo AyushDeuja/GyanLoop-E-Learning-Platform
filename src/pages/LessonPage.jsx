@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { mockCourses } from "../helpers/mockCourses";
 import VideoPlayer from "../components/VideoPlayer";
-import CourseProgress from "../components/CourseProgress";
 import CustomButton from "../components/CustomButton";
 import QuizLesson from "../components/QuizLesson";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import CourseChapter from "../components/CourseChapter";
 
 const LessonPage = () => {
   const params = useParams();
@@ -145,7 +145,7 @@ const LessonPage = () => {
           </div>
 
           <div className="lg:col-span-1">
-            <CourseProgress course={localCourse} activeLessonId={lessonId} />
+            <CourseChapter course={localCourse} activeLessonId={lessonId} />
           </div>
         </div>
       </div>

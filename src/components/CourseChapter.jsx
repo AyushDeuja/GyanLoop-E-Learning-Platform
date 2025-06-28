@@ -2,7 +2,7 @@ import React from "react";
 import { Check } from "lucide-react";
 import { useNavigate } from "react-router";
 
-const CourseProgress = ({ course, activeLessonId }) => {
+const CourseChapter = ({ course, activeLessonId }) => {
   const navigate = useNavigate();
 
   if (!course) return <div className="text-white">No course data</div>;
@@ -59,4 +59,4 @@ const CourseProgress = ({ course, activeLessonId }) => {
   );
 };
 
-export default CourseProgress;
+export default CourseChapter;
