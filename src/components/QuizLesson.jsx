@@ -26,11 +26,6 @@ const QuizLesson = ({ lesson, onComplete }) => {
 
   return (
     <div className="text-white">
-      <h2 className="text-2xl font-bold mb-2">Quiz: {lesson.title}</h2>
-      <p className="text-gray-400 mb-4">
-        Duration: {lesson.duration} &nbsp; | &nbsp; Type: {lesson.type}
-      </p>
-
       {questions.map((q, idx) => {
         const selected = answers[q.id];
         const isCorrect = selected === q.correctAnswer;
@@ -88,17 +83,13 @@ const QuizLesson = ({ lesson, onComplete }) => {
         );
       })}
 
-      {!submitted ? (
+      {!submitted && (
         <button
           onClick={handleSubmit}
           className="w-full mt-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition"
         >
           Submit Quiz
         </button>
-      ) : (
-        <div className="text-center text-green-400 font-medium mt-4">
-          Quiz submitted!
-        </div>
       )}
     </div>
   );

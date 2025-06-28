@@ -99,20 +99,6 @@ const LessonPage = () => {
                 <div className="flex items-center gap-4 text-sm text-gray-400">
                   <span>Duration: {lesson.duration}</span>
                   <span>Type: {lesson.type}</span>
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`w-2 h-2 rounded-full ${
-                        lesson.isCompleted ? "bg-green-400" : "bg-gray-600"
-                      }`}
-                    ></div>
-                    <span
-                      className={`${
-                        lesson.isCompleted ? "text-green-400" : "text-gray-600"
-                      }`}
-                    >
-                      {lesson.isCompleted ? "Completed" : "Not completed"}
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
