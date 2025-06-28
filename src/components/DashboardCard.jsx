@@ -1,8 +1,17 @@
 import React from "react";
 import ProgressBar from "./ProgressBar";
 import CustomButton from "./CustomButton";
+import { useNavigate } from "react-router";
 
-const DashboardCard = ({ title, instructor, progress, duration }) => {
+const DashboardCard = ({
+  title,
+  instructor,
+  progress,
+  duration,
+  courseId,
+  firstLessonId,
+}) => {
+  const navigate = useNavigate();
   return (
     <div className="bg-gray-800 p-4 rounded-xl">
       <div className="flex items-center gap-4">
@@ -22,6 +31,9 @@ const DashboardCard = ({ title, instructor, progress, duration }) => {
       <CustomButton
         className="mt-4 w-full bg-white !text-black py-2 rounded-lg"
         label={"Continue Learning"}
+        onClick={() =>
+          navigate(`/courses/${courseId}/lessons/${firstLessonId}`)
+        }
       />
     </div>
   );

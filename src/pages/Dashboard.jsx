@@ -71,6 +71,8 @@ const Dashboard = () => {
             )}
             duration={course.duration}
             image={course.image}
+            courseId={course.id}
+            firstLessonId={course.modules[0].lessons[0]?.id}
           />
         ))}
       </div>
