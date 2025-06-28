@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// load from localStorage if available
 const savedEnrollments = localStorage.getItem("enrolledByUser");
 
 const initialState = {

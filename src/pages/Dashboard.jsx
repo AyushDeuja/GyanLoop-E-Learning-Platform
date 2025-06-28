@@ -2,6 +2,7 @@ import { mockCourses } from "../helpers/mockCourses";
 import { useSelector } from "react-redux";
 import CertificateCard from "../components/CertificateCard";
 import DashboardCard from "../components/DashboardCard";
+import CustomButton from "../components/CustomButton";
 
 const Dashboard = () => {
   const user = useSelector((state) => state.auth.user);
@@ -85,13 +86,12 @@ const Dashboard = () => {
           ))}
         </div>
         <div className="bg-gray-800 p-4 rounded-xl">
-          <h3 className="text-lg font-semibold mb-2">Quick Actions</h3>
-          <button className="bg-white text-black px-4 py-2 rounded-lg block mb-2 w-full">
-            Browse New Courses
-          </button>
-          <button className="bg-white text-black px-4 py-2 rounded-lg w-full">
-            View All Courses
-          </button>
+          <h3 className="text-lg font-semibold mb-2">Quick Action</h3>
+
+          <CustomButton
+            className="bg-white !text-black px-4 py-2 rounded-lg w-full"
+            label={"View All Courses"}
+          />
         </div>
       </div>
     </div>

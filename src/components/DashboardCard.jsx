@@ -1,5 +1,6 @@
 import React from "react";
 import ProgressBar from "./ProgressBar";
+import CustomButton from "./CustomButton";
 
 const DashboardCard = ({ title, instructor, progress, duration }) => {
   return (
@@ -18,9 +19,10 @@ const DashboardCard = ({ title, instructor, progress, duration }) => {
         <p className="text-xs text-right mt-1">{progress}%</p>
       </div>
       <div className="text-sm text-gray-400 mt-2">⏱ {duration}</div>
-      <button className="mt-4 w-full bg-white text-black py-2 rounded-lg">
-        Continue
-      </button>
+      <CustomButton
+        className="mt-4 w-full bg-white !text-black py-2 rounded-lg"
+        label={"Continue Learning"}
+      />
     </div>
   );
 };
