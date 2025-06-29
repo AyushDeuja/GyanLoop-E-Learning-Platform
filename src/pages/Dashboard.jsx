@@ -42,10 +42,6 @@ const Dashboard = () => {
           <h2 className="text-xl font-bold">0</h2>
         </div>
         <div className="bg-gray-800 p-4 rounded-xl">
-          <p>Learning Time</p>
-          <h2 className="text-xl font-bold">14h</h2>
-        </div>
-        <div className="bg-gray-800 p-4 rounded-xl">
           <p>Certificates</p>
           <h2 className="text-xl font-bold">{completedCertificates.length}</h2>
         </div>
@@ -89,15 +85,16 @@ const Dashboard = () => {
             />
           ))}
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl">
-          <h3 className="text-lg font-semibold mb-2">Quick Action</h3>
+      </div>
 
-          <CustomButton
-            className="bg-white !text-black px-4 py-2 rounded-lg w-full"
-            label={"View All Courses"}
-            onClick={() => navigate("/courses")}
-          />
-        </div>
+      <div className="bg-gray-800 my-4 p-4 rounded-xl">
+        <h3 className="text-lg font-semibold mb-2">Quick Action</h3>
+
+        <CustomButton
+          className="bg-white !text-black px-4 py-2 rounded-lg w-full"
+          label={"View All Courses"}
+          onClick={() => navigate("/courses")}
+        />
       </div>
     </div>
   );

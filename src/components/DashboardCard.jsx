@@ -2,6 +2,7 @@ import React from "react";
 import ProgressBar from "./ProgressBar";
 import CustomButton from "./CustomButton";
 import { useNavigate } from "react-router";
+import { Clock } from "lucide-react";
 
 const DashboardCard = ({
   title,
@@ -32,7 +33,10 @@ const DashboardCard = ({
         <ProgressBar progress={progress} />
         <p className="text-xs text-right mt-1">{progress}%</p>
       </div>
-      <div className="text-sm text-gray-400 mt-2">⏱ {duration}</div>
+      <div className="flex items-center gap-1 text-sm text-gray-400 mt-2">
+        <Clock className="w-4 h-4" />
+        {duration}
+      </div>
       <CustomButton
         className="mt-4 w-full bg-white !text-black py-2 rounded-lg"
         label={"Continue Learning"}
