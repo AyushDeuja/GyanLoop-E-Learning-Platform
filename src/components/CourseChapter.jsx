@@ -1,4 +1,3 @@
-// components/CourseChapter.jsx
 import React from "react";
 import { Check } from "lucide-react";
 import { useNavigate } from "react-router";
@@ -18,18 +17,23 @@ const CourseChapter = ({ course, activeLessonId }) => {
 
   const handleLessonClick = (lesson) => {
     navigate(`/courses/${course.id}/lessons/${lesson.id}`);
-    dispatch(
-      markLessonCompleted({
-        userEmail,
-        courseId: course.id,
-        lessonId: lesson.id,
-      })
-    );
+
+    // ✅ Only mark video lessons as complete
+    if (lesson.type === "video") {
+      dispatch(
+        markLessonCompleted({
+          userEmail,
+          courseId: course.id,
+          lessonId: lesson.id,
+        })
+      );
+    }
   };
 
   return (
     <div className="bg-gray-950 p-6 my-41 rounded-lg h-fit">
       <h2 className="text-white text-xl font-bold mb-6">Course Progress</h2>
+
       {course.modules.map((module) => (
         <div key={module.id} className="mb-6">
           <h3 className="text-white font-semibold mb-3">{module.title}</h3>
@@ -37,6 +41,7 @@ const CourseChapter = ({ course, activeLessonId }) => {
             {module.lessons.map((lesson) => {
               const isActive = lesson.id === activeLessonId;
               const isCompleted = completedLessons.includes(lesson.id);
+
               return (
                 <div
                   key={lesson.id}
@@ -61,7 +66,7 @@ const CourseChapter = ({ course, activeLessonId }) => {
                   >
                     {lesson.title}
                   </span>
-                  {isCompleted && (
+                  {isCompleted && lesson.type === "video" && (
                     <Check size={16} className="text-green-400" />
                   )}
                 </div>

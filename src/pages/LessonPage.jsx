@@ -1,47 +1,66 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import { mockCourses } from "../helpers/mockCourses";
 import VideoPlayer from "../components/VideoPlayer";
 import CustomButton from "../components/CustomButton";
 import QuizLesson from "../components/QuizLesson";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import CourseChapter from "../components/CourseChapter";
+import { markLessonCompleted } from "../redux/courseSlice";
 
 const LessonPage = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userEmail = useSelector((state) => state.auth.user.email);
+
   const courseId = params.id;
   const lessonId = params.lessonId;
 
   const [localCourse, setLocalCourse] = useState(null);
+  const [autoMarked, setAutoMarked] = useState(false);
 
   const course = mockCourses.find((c) => c.id === courseId);
 
   useEffect(() => {
     if (!course) return;
 
-    if (!lessonId) {
-      const firstLesson = course.modules[0]?.lessons[0];
-      if (firstLesson) {
-        navigate(`/courses/${courseId}/lessons/${firstLesson.id}`, {
-          replace: true,
-        });
-      }
+    const firstLesson = course.modules[0]?.lessons[0];
+
+    if (!lessonId && firstLesson) {
+      navigate(`/courses/${courseId}/lessons/${firstLesson.id}`, {
+        replace: true,
+      });
     } else {
       setLocalCourse(JSON.parse(JSON.stringify(course)));
     }
   }, [courseId, lessonId]);
 
-  if (!course) {
+  useEffect(() => {
+    if (!localCourse) return;
+
+    const firstLesson = localCourse.modules[0]?.lessons[0];
+    const isFirst = firstLesson?.id === lessonId;
+
+    if (isFirst && firstLesson?.type === "video" && !autoMarked) {
+      dispatch(
+        markLessonCompleted({
+          userEmail,
+          courseId,
+          lessonId: firstLesson.id,
+        })
+      );
+      setAutoMarked(true);
+    }
+  }, [localCourse, lessonId]);
+
+  if (!course || !lessonId || !localCourse) {
     return (
       <div className="flex items-center justify-center h-screen text-white text-3xl">
-        Course not found
+        Loading...
       </div>
     );
-  }
-
-  if (!lessonId || !localCourse) {
-    return null;
   }
 
   const allLessons = localCourse.modules.flatMap((m) => m.lessons);
@@ -54,15 +73,8 @@ const LessonPage = () => {
   );
   const lesson = module?.lessons.find((l) => l.id === lessonId);
 
-  if (!lesson) {
-    return (
-      <div className="flex items-center justify-center h-screen text-white text-3xl">
-        Lesson not found
-      </div>
-    );
-  }
-
-  const markLessonCompleted = () => {
+  // Mark lesson completed both locally and globally (redux)
+  const markLessonCompletedLocal = () => {
     setLocalCourse((prevCourse) => {
       const updated = JSON.parse(JSON.stringify(prevCourse));
       for (const m of updated.modules) {
@@ -74,6 +86,39 @@ const LessonPage = () => {
       }
       return updated;
     });
+
+    if (lesson.type === "video") {
+      dispatch(
+        markLessonCompleted({
+          userEmail,
+          courseId,
+          lessonId: lesson.id,
+        })
+      );
+    }
+  };
+
+  // Helper to mark any lesson completed when clicking next/previous
+  const markLessonCompletedById = (lessonIdToMark) => {
+    setLocalCourse((prevCourse) => {
+      const updated = JSON.parse(JSON.stringify(prevCourse));
+      for (const m of updated.modules) {
+        const found = m.lessons.find((l) => l.id === lessonIdToMark);
+        if (found) {
+          found.isCompleted = true;
+          break;
+        }
+      }
+      return updated;
+    });
+
+    dispatch(
+      markLessonCompleted({
+        userEmail,
+        courseId,
+        lessonId: lessonIdToMark,
+      })
+    );
   };
 
   return (
@@ -107,10 +152,13 @@ const LessonPage = () => {
               <VideoPlayer
                 key={lesson.id}
                 videoUrl={lesson.videoUrl}
-                onEnd={markLessonCompleted}
+                onEnd={markLessonCompletedLocal}
               />
             ) : (
-              <QuizLesson lesson={lesson} onComplete={markLessonCompleted} />
+              <QuizLesson
+                lesson={lesson}
+                onComplete={markLessonCompletedLocal}
+              />
             )}
 
             <div className="mt-6 flex justify-between">
@@ -120,11 +168,12 @@ const LessonPage = () => {
                     label="Previous Lesson"
                     buttonIcon={<ArrowLeft size={16} />}
                     className="!bg-gray-800"
-                    onClick={() =>
+                    onClick={() => {
                       navigate(
                         `/courses/${courseId}/lessons/${previousLesson.id}`
-                      )
-                    }
+                      );
+                      markLessonCompletedById(previousLesson.id);
+                    }}
                   />
                 )}
               </div>
@@ -135,9 +184,10 @@ const LessonPage = () => {
                     label="Next Lesson "
                     buttonIcon={<ArrowRight size={16} />}
                     className="bg-white !text-black"
-                    onClick={() =>
-                      navigate(`/courses/${courseId}/lessons/${nextLesson.id}`)
-                    }
+                    onClick={() => {
+                      navigate(`/courses/${courseId}/lessons/${nextLesson.id}`);
+                      markLessonCompletedById(nextLesson.id);
+                    }}
                   />
                 )}
               </div>

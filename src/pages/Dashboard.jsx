@@ -1,4 +1,3 @@
-// pages/Dashboard.jsx
 import { mockCourses } from "../helpers/mockCourses";
 import { useSelector } from "react-redux";
 import CertificateCard from "../components/CertificateCard";
@@ -20,16 +19,26 @@ const Dashboard = () => {
     enrolledCourseIds.includes(course.id)
   );
 
-  const completedCertificates = []; // dynamically add later
-
-  const getCompletedCourseCount = () =>
-    enrolledCourses.filter((course) =>
+  // ✅ Dynamically generate completed certificates
+  const completedCertificates = enrolledCourses
+    .filter((course) =>
       course.modules.every((module) =>
-        module.lessons.every((lesson) =>
-          (completedLessons[course.id] || []).includes(lesson.id)
-        )
+        module.lessons
+          .filter((lesson) => lesson.type === "video")
+          .every((lesson) =>
+            (completedLessons[course.id] || []).includes(lesson.id)
+          )
       )
-    ).length;
+    )
+    .map((course) => ({
+      id: `cert-${course.id}`,
+      courseId: course.id,
+      title: course.title,
+      instructor: course.instructor,
+      date: new Date().toLocaleDateString(),
+    }));
+
+  const getCompletedCourseCount = () => completedCertificates.length;
 
   return (
     <div className="p-6 text-white bg-gray-900 min-h-screen">
@@ -54,12 +63,17 @@ const Dashboard = () => {
       <h2 className="text-xl font-semibold mb-4">My Courses</h2>
       <div className="grid grid-cols-2 gap-4 mb-8">
         {enrolledCourses.map((course) => {
-          const totalLessons = course.modules.reduce(
-            (acc, m) => acc + m.lessons.length,
-            0
+          const videoLessons = course.modules.flatMap((m) =>
+            m.lessons.filter((l) => l.type === "video")
           );
-          const completed = (completedLessons[course.id] || []).length;
-          const progress = Math.floor((completed / totalLessons) * 100);
+          const totalLessons = videoLessons.length;
+          const completed = videoLessons.filter((l) =>
+            (completedLessons[course.id] || []).includes(l.id)
+          ).length;
+          const progress =
+            totalLessons === 0
+              ? 0
+              : Math.floor((completed / totalLessons) * 100);
 
           return (
             <DashboardCard
@@ -76,22 +90,23 @@ const Dashboard = () => {
         })}
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-gray-800 p-4 rounded-xl">
-          <h3 className="text-lg font-semibold mb-2">Certificates</h3>
+      {completedCertificates.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {completedCertificates.map((cert) => (
-            <CertificateCard
-              key={cert.id}
-              title={cert.title}
-              instructor={cert.instructor}
-              date={cert.date}
-            />
+            <div key={cert.id} className="bg-gray-800 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold mb-2">Certificate</h3>
+              <CertificateCard
+                title={cert.title}
+                instructor={cert.instructor}
+                date={cert.date}
+              />
+            </div>
           ))}
         </div>
-      </div>
+      )}
 
       <div className="bg-gray-800 my-4 p-4 rounded-xl">
-        <h3 className="text-lg font-semibold mb-2">Quick Action</h3>
+        <h3 className="text-lg font-semibold mb-5 text-center">Quick Action</h3>
         <CustomButton
           className="bg-white !text-black px-4 py-2 rounded-lg w-full"
           label={"View All Courses"}
