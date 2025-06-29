@@ -18,8 +18,8 @@
 
 ## Third Party Library and Packages
 
-- Vite - Compiling and Bundling - [Link]
-- Tailwind CSS - for styling - [Link]
+- Vite - Compiling and Bundling - [Link](https://vite.dev/guide/)
+- Tailwind CSS - for styling - [Link](https://tailwindcss.com/docs/installation/using-vite)
 - React Router - [Link](https://reactrouter.com/start/declarative/installation)
 - Lucide react icons - [Link](https://lucide.dev/guide/packages/lucide-react)
 - react-toastify - [Link](https://www.npmjs.com/package/react-toastify)
