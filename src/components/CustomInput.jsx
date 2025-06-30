@@ -6,7 +6,7 @@ const CustomInput = ({
   type,
   id,
   name,
-  required = true,
+  required = false,
   className,
   ...rest
 }) => {

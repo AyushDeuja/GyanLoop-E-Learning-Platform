@@ -8,6 +8,12 @@ import { LOGO_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/authSlice";
 import { LucideArrowLeft } from "lucide-react";
+import { object, string } from "yup";
+
+const loginSchema = object({
+  username: string().required("Username is required"),
+  password: string().required("Password is required"),
+});
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,9 +25,7 @@ const Login = () => {
 
   useEffect(() => {
     if (message) {
-      toast.info(message, {
-        autoClose: 3000,
-      });
+      toast.info(message, { autoClose: 3000 });
     }
   }, [message]);
 
@@ -31,19 +35,26 @@ const Login = () => {
     const values = Object.fromEntries(formData.entries());
 
     try {
-      console.log(values);
-      const response = await axiosInstance.post(`/auth/login`, values);
+      const validated = await loginSchema.validate(values, {
+        abortEarly: false,
+      });
 
+      const response = await axiosInstance.post(`/auth/login`, validated);
       dispatch(login(response.data.token));
       navigate("/courses");
       toast.success("Welcome");
-    } catch (errorMessage) {
-      setErrorMessage(
-        errorMessage.response?.data?.message || "Login failed, Please try again"
-      );
-      toast.error("Login failed, Please try again");
+    } catch (err) {
+      if (err.name === "ValidationError") {
+        setErrorMessage(err.errors.join(" | "));
+      } else {
+        setErrorMessage(
+          err.response?.data?.message || "Login failed, Please try again"
+        );
+        toast.error("Login failed, Please try again");
+      }
     }
   };
+
   return (
     <div className="min-h-screen flex gap-50 flex-row items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900">
       <div>
@@ -51,7 +62,10 @@ const Login = () => {
       </div>
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
         <div className="flex items-center justify-between mb-6">
-          <LucideArrowLeft className="h-6 w-6" onClick={() => navigate("/")} />
+          <LucideArrowLeft
+            className="h-6 w-6 cursor-pointer"
+            onClick={() => navigate("/")}
+          />
           <h1 className="text-2xl font-bold text-gray-800">Login</h1>
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
