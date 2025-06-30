@@ -37,14 +37,12 @@ const NavBar = () => {
   return (
     <>
       <nav className="flex items-center justify-between py-4 px-6 lg:px-20 shadow-lg text-white sticky top-0 z-20 backdrop-blur-sm bg-gray-900/10">
-        {/* Logo */}
         <div className="cursor-pointer z-30">
           <NavLink to="/">
             <img src={LOGO_URL} alt="Logo Img" className="h-10 w-auto" />
           </NavLink>
         </div>
 
-        {/* Center nav links (only on lg+) */}
         <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 space-x-8">
           <NavLink
             to="/courses"
@@ -68,7 +66,6 @@ const NavBar = () => {
           </NavLink>
         </div>
 
-        {/* Auth Section (right on desktop, hidden below lg) */}
         <div className="hidden lg:flex items-center space-x-4 z-30">
           {user ? (
             <>
@@ -99,7 +96,6 @@ const NavBar = () => {
           )}
         </div>
 
-        {/* Hamburger icon on <lg screens */}
         <div className="lg:hidden z-30" onClick={toggleMenu}>
           {menuOpen ? (
             <X className="w-7 h-7 cursor-pointer" />
@@ -109,7 +105,6 @@ const NavBar = () => {
         </div>
       </nav>
 
-      {/* Mobile dropdown menu */}
       {menuOpen && (
         <div className="lg:hidden flex flex-col gap-4 bg-gray-900 text-white px-6 py-4">
           <NavLink
@@ -169,7 +164,6 @@ const NavBar = () => {
         </div>
       )}
 
-      {/* Logout Confirmation Modal */}
       <Modal
         isModalOpen={isModalOpen}
         onClose={handleCloseModal}
