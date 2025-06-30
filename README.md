@@ -27,3 +27,4 @@
 - Axios - [Link](https://axios-http.com/docs/intro)
 - jwt-decode - [Link](https://www.npmjs.com/package/jwt-decode)
 - Redux - [Link](https://redux.js.org/tutorials/quick-start)
+- Yup - [Link](https://www.npmjs.com/package/yup)

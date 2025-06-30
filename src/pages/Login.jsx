@@ -75,7 +75,7 @@ const Login = () => {
         <p className="text-md text-center text-gray-800 mt-6">
           Don't have an account?{" "}
           <NavLink to="/signup" className="text-blue-600 hover:underline">
-            SignUp here
+            SignUp
           </NavLink>
         </p>
       </div>
