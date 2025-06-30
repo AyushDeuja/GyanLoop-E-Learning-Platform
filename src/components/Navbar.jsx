@@ -106,7 +106,7 @@ const NavBar = () => {
       </nav>
 
       {menuOpen && (
-        <div className="lg:hidden fixed top-[64px] left-0 w-full z-30 bg-gray-800/40 backdrop-blur-sm text-white px-6 py-4 shadow-md">
+        <div className="lg:hidden fixed top-[64px] left-0 w-full z-30 bg-gray-900/10 backdrop-blur-sm text-white px-6 py-4 shadow-md">
           <NavLink
             to="/courses"
             onClick={() => setMenuOpen(false)}
