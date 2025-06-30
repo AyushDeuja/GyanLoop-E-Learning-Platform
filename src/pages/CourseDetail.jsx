@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import { mockCourses } from "../helpers/mockCourses";
 import CustomButton from "../components/CustomButton";
 import {
@@ -11,11 +12,15 @@ import {
   ChevronDown,
   ArrowLeft,
 } from "lucide-react";
-import { Line } from "rc-progress";
 
 const CourseDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const userEmail = useSelector((state) => state.auth.user.email);
+  const completedLessonsByUser = useSelector(
+    (state) => state.course.completedLessons[userEmail] || {}
+  );
+
   const course = mockCourses.find((c) => c.id.toString() === id);
 
   if (!course)
@@ -25,19 +30,23 @@ const CourseDetail = () => {
       </div>
     );
 
-  const totalLessons = course.modules.reduce(
-    (acc, module) => acc + module.lessons.length,
-    0
+  // Get all video lessons for this course
+  const videoLessons = course.modules.flatMap((m) =>
+    m.lessons.filter((l) => l.type === "video")
   );
-  const completedLessons = course.modules.reduce(
-    (acc, module) =>
-      acc + module.lessons.filter((lesson) => lesson.isCompleted).length,
-    0
-  );
-  const progress = Math.floor((completedLessons / totalLessons) * 100);
+
+  const totalLessons = videoLessons.length;
+
+  // Get completed video lessons from Redux state
+  const completedLessonIds = completedLessonsByUser[course.id] || [];
+  const completedCount = videoLessons.filter((l) =>
+    completedLessonIds.includes(l.id)
+  ).length;
+
+  const progress =
+    totalLessons === 0 ? 0 : Math.floor((completedCount / totalLessons) * 100);
 
   const allLessons = course.modules.flatMap((module) => module.lessons);
-
   const firstLesson = allLessons[0];
 
   return (
@@ -93,19 +102,21 @@ const CourseDetail = () => {
         <div className="pt-6">
           <h2 className="text-xl font-bold">Course Content</h2>
           <p className="text-sm text-gray-400">
-            {course.modules.length} modules • {totalLessons} lessons
+            {course.modules.length} modules • {totalLessons} video lessons
           </p>
 
+          {/* Custom Dynamic Progress Bar */}
           <div className="mt-2">
             <p className="text-sm text-gray-400 mb-1">Course Progress</p>
-            <Line
-              percent={progress}
-              strokeWidth={1}
-              strokeColor="#ffffff"
-              trailColor="#374151"
-            />
+            <div className="w-full h-2 rounded-full bg-gray-700">
+              <div
+                className="h-2 rounded-full bg-white transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
             <p className="text-sm text-gray-400 mt-1">
-              {completedLessons} of {totalLessons} lessons completed ({progress}
+              {completedCount} of {totalLessons} video lessons completed (
+              {progress}
               %)
             </p>
           </div>
@@ -117,31 +128,34 @@ const CourseDetail = () => {
                 className="rounded-lg bg-gray-800/60 p-4 shadow transition-all"
               >
                 <summary className="cursor-pointer font-semibold flex items-center gap-2 text-lg text-white">
-                  {module.isCompleted ? (
-                    <CheckCircle className="text-green-400 w-5 h-5" />
-                  ) : (
-                    <Circle className="text-gray-400 w-5 h-5" />
-                  )}
+                  {/* Optional: module completion logic could be enhanced */}
                   {module.title}
                   <ChevronDown className="ml-auto w-5 h-5 text-gray-400" />
                 </summary>
                 <ul className="text-sm text-gray-300 mt-3 space-y-2">
-                  {module.lessons.map((lesson) => (
-                    <li
-                      key={lesson.id}
-                      className="flex items-center gap-4 p-2 rounded hover:bg-gray-700/40 transition"
-                    >
-                      {lesson.isCompleted ? (
-                        <CheckCircle className="text-green-400 w-4 h-4" />
-                      ) : (
-                        <Circle className="text-gray-400 w-4 h-4" />
-                      )}
-                      <span className="flex-1">{lesson.title}</span>
-                      <span className="text-xs text-gray-400">
-                        {lesson.duration}
-                      </span>
-                    </li>
-                  ))}
+                  {module.lessons
+                    .filter((lesson) => lesson.type !== "quiz") // <-- Filter out quizzes here
+                    .map((lesson) => {
+                      const isCompleted = completedLessonIds.includes(
+                        lesson.id
+                      );
+                      return (
+                        <li
+                          key={lesson.id}
+                          className="flex items-center gap-4 p-2 rounded hover:bg-gray-700/40 transition"
+                        >
+                          {isCompleted ? (
+                            <CheckCircle className="text-green-400 w-4 h-4" />
+                          ) : (
+                            <Circle className="text-gray-400 w-4 h-4" />
+                          )}
+                          <span className="flex-1">{lesson.title}</span>
+                          <span className="text-xs text-gray-400">
+                            {lesson.duration}
+                          </span>
+                        </li>
+                      );
+                    })}
                 </ul>
               </details>
             ))}
