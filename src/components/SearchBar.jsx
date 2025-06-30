@@ -3,21 +3,21 @@ import { Search } from "lucide-react";
 
 const SearchBar = ({ search, category, level, onChange }) => {
   return (
-    <div className="w-full px-4 md:px-0 ">
-      <div className="w-full flex flex-col md:flex-row items-center gap-4">
-        <div className="flex items-center flex-1 bg-gray-900 border border-[#1f1f1f] rounded-md px-4 py-3 text-sm text-white">
-          <Search className="w-4 h-4 mr-2 text-gray-400" />
+    <div className="w-full px-4 md:px-0">
+      <div className="w-full flex flex-col sm:flex-row items-center gap-4">
+        <div className="flex items-center flex-grow bg-gray-900 border border-[#1f1f1f] rounded-md px-4 py-3 text-sm text-white min-w-0">
+          <Search className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
           <input
             type="text"
-            placeholder="Search courses, instructors, or topics..."
-            className="bg-transparent focus:outline-none w-full placeholder:text-gray-400"
+            placeholder="Search courses or instructors"
+            className="bg-transparent focus:outline-none w-full placeholder:text-gray-400 min-w-0"
             value={search}
             onChange={(e) => onChange("search", e.target.value)}
           />
         </div>
 
         <select
-          className="flex-1 md:flex-none bg-gray-900 border border-[#1f1f1f] text-white text-sm px-3 py-3 rounded-md focus:outline-none w-full md:w-auto"
+          className="flex-shrink-0 bg-gray-900 border border-[#1f1f1f] text-white text-sm px-3 py-3 rounded-md focus:outline-none w-full sm:w-auto"
           value={category}
           onChange={(e) => onChange("category", e.target.value)}
         >
@@ -30,7 +30,7 @@ const SearchBar = ({ search, category, level, onChange }) => {
         </select>
 
         <select
-          className="flex-1 md:flex-none bg-gray-900 border border-[#1f1f1f] text-white text-sm px-3 py-3 rounded-md focus:outline-none w-full md:w-auto"
+          className="flex-shrink-0 bg-gray-900 border border-[#1f1f1f] text-white text-sm px-3 py-3 rounded-md focus:outline-none w-full sm:w-auto"
           value={level}
           onChange={(e) => onChange("level", e.target.value)}
         >
