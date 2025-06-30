@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Search } from "lucide-react";
+import { mockCourses } from "../helpers/mockCourses"; // adjust path if needed
 
 const SearchBar = ({ search, category, level, onChange }) => {
+  const [categories, setCategories] = useState([]);
+  const [levels, setLevels] = useState([]);
+
+  useEffect(() => {
+    const uniqueCategories = Array.from(
+      new Set(mockCourses.map((course) => course.category))
+    ).sort();
+
+    const uniqueLevels = Array.from(
+      new Set(mockCourses.map((course) => course.difficulty))
+    ).sort();
+
+    setCategories(uniqueCategories);
+    setLevels(uniqueLevels);
+  }, []);
+
   return (
     <div className="w-full px-4 md:px-0">
       <div className="w-full flex flex-col sm:flex-row items-center gap-4">
@@ -22,11 +39,11 @@ const SearchBar = ({ search, category, level, onChange }) => {
           onChange={(e) => onChange("category", e.target.value)}
         >
           <option value="">All Categories</option>
-          <option>Programming</option>
-          <option>Web Development</option>
-          <option>Design</option>
-          <option>Computer Science</option>
-          <option>Data Analysis</option>
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
         </select>
 
         <select
@@ -35,9 +52,11 @@ const SearchBar = ({ search, category, level, onChange }) => {
           onChange={(e) => onChange("level", e.target.value)}
         >
           <option value="">All Levels</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
+          {levels.map((lvl) => (
+            <option key={lvl} value={lvl}>
+              {lvl.charAt(0).toUpperCase() + lvl.slice(1)}
+            </option>
+          ))}
         </select>
       </div>
     </div>
