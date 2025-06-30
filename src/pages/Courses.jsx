@@ -82,7 +82,7 @@ const Courses = () => {
         onChange={handleFilterChange}
       />
 
-      <div className="flex justify-center flex-wrap gap-8 my-5">
+      <div className="flex justify-center flex-wrap gap-10 my-5">
         {filteredCourses.length === 0 ? (
           <p className="text-gray-400 text-xl">No courses found.</p>
         ) : (

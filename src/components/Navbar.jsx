@@ -36,7 +36,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="flex items-center justify-between py-4 px-6 lg:px-20 shadow-lg text-white sticky top-0 z-20 backdrop-blur-sm bg-gray-900/10">
+      <nav className="flex items-center justify-between py-4 px-6 lg:px-10 shadow-lg text-white sticky top-0 z-20 backdrop-blur-sm bg-gray-900/10">
         <div className="cursor-pointer z-30">
           <NavLink to="/">
             <img src={LOGO_URL} alt="Logo Img" className="h-10 w-auto" />

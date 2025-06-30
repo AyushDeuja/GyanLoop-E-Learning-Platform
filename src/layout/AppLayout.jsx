@@ -6,7 +6,7 @@ const AppLayout = () => {
     <div className="min-h-screen  flex flex-col bg-gradient-to-b from-gray-800 to-gray-900">
       <NavBar />
 
-      <main className="flex-grow px-20 ">
+      <main className="flex-grow px-10 ">
         <Outlet />
       </main>
 
