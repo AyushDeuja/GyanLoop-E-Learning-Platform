@@ -106,12 +106,14 @@ const NavBar = () => {
       </nav>
 
       {menuOpen && (
-        <div className="lg:hidden flex flex-col gap-4 bg-gray-900 text-white px-6 py-4">
+        <div className="lg:hidden fixed top-[64px] left-0 w-full z-30 bg-gray-800/40 backdrop-blur-sm text-white px-6 py-4 shadow-md">
           <NavLink
             to="/courses"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `text-lg font-medium ${isActive ? "text-amber-500" : ""}`
+              `block text-lg font-medium mb-2 ${
+                isActive ? "text-amber-500" : ""
+              }`
             }
           >
             Courses
@@ -120,7 +122,9 @@ const NavBar = () => {
             to="/dashboard"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `text-lg font-medium ${isActive ? "text-amber-500" : ""}`
+              `block text-lg font-medium mb-4 ${
+                isActive ? "text-amber-500" : ""
+              }`
             }
           >
             Dashboard
@@ -130,7 +134,7 @@ const NavBar = () => {
 
           {user ? (
             <>
-              <span className="flex items-center gap-2 text-lg font-medium">
+              <span className="flex items-center gap-2 text-lg font-medium mb-2">
                 <UserIcon className="w-5 h-5" />
                 {user.name || "User"}
               </span>
@@ -145,7 +149,7 @@ const NavBar = () => {
             <>
               <CustomButton
                 label="Sign Up"
-                className="p-5 !bg-blue-600 w-full"
+                className="p-5 !bg-blue-600 w-full mb-2"
                 onClick={() => {
                   navigate("/signup");
                   setMenuOpen(false);
