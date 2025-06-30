@@ -13,6 +13,7 @@
 
 ### App Section
 
+- Landing Page
 - Courses
 - Dashboard
 
@@ -26,4 +27,3 @@
 - Axios - [Link](https://axios-http.com/docs/intro)
 - jwt-decode - [Link](https://www.npmjs.com/package/jwt-decode)
 - Redux - [Link](https://redux.js.org/tutorials/quick-start)
-- rc-progress - [Link](https://www.npmjs.com/package/rc-progress)
