@@ -22,7 +22,7 @@ const SearchBar = ({ search, category, level, onChange }) => {
   return (
     <div className="w-full px-4 md:px-0">
       <div className="w-full flex flex-col sm:flex-row items-center gap-4">
-        <div className="flex items-center flex-grow bg-gray-900 border border-[#1f1f1f] rounded-md px-4 py-3 text-sm text-white min-w-0">
+        <div className="flex items-center w-full flex-grow bg-gray-900 border border-[#1f1f1f] rounded-md px-4 py-3 text-sm text-white min-w-0">
           <Search className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
           <input
             type="text"

@@ -161,7 +161,7 @@ const LessonPage = () => {
               />
             )}
 
-            <div className="mt-6 flex justify-between">
+            <div className="mt-6 flex justify-between sm:flex-row flex-col gap-4">
               <div className="w-48">
                 {previousLesson && (
                   <CustomButton
