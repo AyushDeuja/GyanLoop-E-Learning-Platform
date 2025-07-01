@@ -87,7 +87,7 @@ const CourseCard = ({
           <span className="text-xl font-bold text-blue-400">${price}</span>
           <CustomButton
             label={buttonLabel}
-            className="sm:p-4 bg-gray-300 !text-black sm:text-lg text-sm p-2"
+            className="sm:p-3 bg-gray-300 !text-black sm:text-lg text-sm p-2"
             onClick={handleClick}
           />
         </div>

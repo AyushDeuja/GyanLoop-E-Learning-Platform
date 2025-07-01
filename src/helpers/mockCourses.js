@@ -395,6 +395,7 @@ export const mockCourses = [
       },
     ],
   },
+
   {
     id: "4",
     title: "UI/UX Design Basics",
@@ -564,6 +565,23 @@ export const mockCourses = [
             videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
             isCompleted: false,
           },
+
+          {
+            id: "l6",
+            title: "Sorting Algorithms Overview",
+            type: "video",
+            duration: "25 min",
+            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            isCompleted: false,
+          },
+          {
+            id: "l7",
+            title: "Big O Notation",
+            type: "video",
+            duration: "18 min",
+            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            isCompleted: false,
+          },
           {
             id: "l2",
             title: "DSA Quiz",
@@ -603,22 +621,6 @@ export const mockCourses = [
                 },
               ],
             },
-          },
-          {
-            id: "l6",
-            title: "Sorting Algorithms Overview",
-            type: "video",
-            duration: "25 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
-            isCompleted: false,
-          },
-          {
-            id: "l7",
-            title: "Big O Notation",
-            type: "video",
-            duration: "18 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
-            isCompleted: false,
           },
         ],
       },
