@@ -41,7 +41,7 @@ const Login = () => {
 
       const response = await axiosInstance.post(`/auth/login`, validated);
       dispatch(login(response.data.token));
-      navigate("/courses");
+      navigate("/dashboard");
       toast.success("Welcome");
     } catch (err) {
       if (err.name === "ValidationError") {
