@@ -68,20 +68,15 @@ GyanLoop is a modern, responsive, and user-friendly **e-learning platform** buil
 
 ## 🧰 Tech Stack & Packages
 
-| Library / Tool       | Purpose                                | Link                                                                      |
-| -------------------- | -------------------------------------- | ------------------------------------------------------------------------- |
-| **Vite**             | Build tool for faster dev & production | [vite.dev](https://vite.dev/guide/)                                       |
-| **React + JSX**      | UI library                             | [react.dev](https://react.dev)                                            |
-| **Tailwind CSS**     | Utility-first CSS framework            | [tailwindcss.com](https://tailwindcss.com/docs/installation/using-vite)   |
-| **React Router DOM** | Routing between pages                  | [reactrouter.com](https://reactrouter.com/start/declarative/installation) |
-| **Lucide React**     | Modern icons                           | [lucide.dev](https://lucide.dev/guide/packages/lucide-react)              |
-| **react-toastify**   | Toast notifications                    | [npmjs.com](https://www.npmjs.com/package/react-toastify)                 |
-| **Axios**            | HTTP requests                          | [axios-http.com](https://axios-http.com/docs/intro)                       |
-| **jwt-decode**       | Decode JWT tokens                      | [npmjs.com](https://www.npmjs.com/package/jwt-decode)                     |
-| **Redux Toolkit**    | State management                       | [redux.js.org](https://redux.js.org/tutorials/quick-start)                |
-| **Yup**              | Form validation                        | [npmjs.com](https://www.npmjs.com/package/yup)                            |
-
----
+- Vite - Compiling and Bundling - [Link](https://vite.dev/guide/)
+- Tailwind CSS - for styling - [Link](https://tailwindcss.com/docs/installation/using-vite)
+- React Router - for routing - [Link](https://reactrouter.com/start/declarative/installation)
+- Lucide react icons - for icons - [Link](https://lucide.dev/guide/packages/lucide-react)
+- react-toastify - for toast messages - [Link](https://www.npmjs.com/package/react-toastify)
+- Axios - to fetch apis - [Link](https://axios-http.com/docs/intro)
+- jwt-decode - to decode jwt code or tokens - [Link](https://www.npmjs.com/package/jwt-decode)
+- Redux - for declaration of global state variables - [Link](https://redux.js.org/tutorials/quick-start)
+- Yup - for validating forms - [Link](https://www.npmjs.com/package/yup)
 
 ## 🧑‍🏫 How It Works
 
@@ -93,21 +88,20 @@ GyanLoop is a modern, responsive, and user-friendly **e-learning platform** buil
 2. **Courses and Lessons**
 
    - Users can explore and enroll in courses.
-   - Each course contains modules/lessons.
-   - Lessons include video content and quizzes.
-   - Lessons are auto-marked complete after video end and/or quiz completion.
+   - Each course contains lessons and quizzes.
+   - Lessons include video content.
+   - Lessons are auto-marked complete after watching videos.
 
 3. **Quizzes**
 
-   - Each lesson may include one or more multiple-choice questions.
+   - Each course may include one or more multiple-choice questions.
    - User selects answers and submits.
    - The quiz is auto-graded and score is displayed.
-   - Correct answers can optionally be shown.
 
 4. **Progress & Dashboard**
 
    - Users see a real-time progress bar for each course.
-   - Dashboard summarizes enrolled courses, quiz scores, and certificates.
+   - Dashboard summarizes enrolled courses and certificates.
 
 5. **Certificate**
-   - Upon 100% course completion (including quizzes), users can download a certificate.
+   - Upon 100% course completion, users can download a certificate.
