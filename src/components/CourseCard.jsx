@@ -46,7 +46,7 @@ const CourseCard = ({
   };
 
   return (
-    <div className="bg-[#0f172a] text-white rounded-xl overflow-hidden border border-gray-700 w-[430px] shadow-lg">
+    <div className="bg-[#0f172a] text-white rounded-xl overflow-hidden border border-gray-700 w-[420px] shadow-lg">
       <img
         src={image}
         alt={title}

@@ -1,7 +1,6 @@
 import { Route, Routes, Navigate } from "react-router";
 import { useSelector } from "react-redux";
 import AppLayout from "./layout/AppLayout";
-import WelcomePage from "./pages/WelcomePage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Courses from "./pages/Courses";
@@ -9,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import CourseDetail from "./pages/CourseDetail";
 import NotFound from "./pages/NotFound";
 import LessonPage from "./pages/LessonPage";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -27,7 +27,7 @@ function App() {
       <Route path="/login" element={<Login />} />
 
       <Route path="/" element={<AppLayout />}>
-        <Route index element={<WelcomePage />} />
+        <Route index element={<LandingPage />} />
         <Route path="/courses" element={<Courses />} />
 
         <Route

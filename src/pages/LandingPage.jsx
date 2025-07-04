@@ -4,7 +4,7 @@ import FeatureCard from "../components/FeatureCard";
 import { Video, UserCheck, LineChart, BadgeCheck } from "lucide-react";
 import { useNavigate } from "react-router";
 
-const WelcomePage = () => {
+const LandingPage = () => {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background text-white flex justify-center flex-col">
@@ -75,4 +75,4 @@ const WelcomePage = () => {
   );
 };
 
-export default WelcomePage;
+export default LandingPage;
