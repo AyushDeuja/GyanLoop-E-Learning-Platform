@@ -73,7 +73,6 @@ const LessonPage = () => {
   );
   const lesson = module?.lessons.find((l) => l.id === lessonId);
 
-  // Mark lesson completed both locally and globally (redux)
   const markLessonCompletedLocal = () => {
     setLocalCourse((prevCourse) => {
       const updated = JSON.parse(JSON.stringify(prevCourse));
@@ -98,7 +97,6 @@ const LessonPage = () => {
     }
   };
 
-  // Helper to mark any lesson completed when clicking next/previous
   const markLessonCompletedById = (lessonIdToMark) => {
     setLocalCourse((prevCourse) => {
       const updated = JSON.parse(JSON.stringify(prevCourse));

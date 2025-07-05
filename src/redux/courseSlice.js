@@ -1,8 +1,7 @@
-// store/courseSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  completedLessons: {}, // { userEmail: { courseId: [lessonId, lessonId...] } }
+  completedLessons: {},
 };
 
 const courseSlice = createSlice({
