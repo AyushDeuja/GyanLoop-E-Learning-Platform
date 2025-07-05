@@ -44,7 +44,6 @@ const Dashboard = () => {
       <h1 className="text-2xl font-bold mb-1">Welcome back, {user.name}!</h1>
       <p className="text-gray-400 mb-6">Continue your learning journey</p>
 
-      {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
         <div className="bg-gray-800 p-4 rounded-xl text-center">
           <p>Enrolled Courses</p>
@@ -60,7 +59,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* My Courses */}
       <h2 className="text-xl font-semibold mb-4">My Courses</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         {enrolledCourses.map((course) => {
@@ -91,7 +89,6 @@ const Dashboard = () => {
         })}
       </div>
 
-      {/* Certificates */}
       {completedCertificates.length > 0 && (
         <>
           <h2 className="text-xl font-semibold mb-4">Certificates</h2>
@@ -110,7 +107,6 @@ const Dashboard = () => {
         </>
       )}
 
-      {/* Quick Action */}
       <div className="bg-gray-800 p-4 rounded-xl">
         <h3 className="text-lg font-semibold mb-4 text-center">Quick Action</h3>
         <CustomButton
