@@ -40,27 +40,29 @@ const Dashboard = () => {
   const getCompletedCourseCount = () => completedCertificates.length;
 
   return (
-    <div className="p-6 text-white bg-gray-900 min-h-screen">
-      <h1 className="text-2xl font-bold">Welcome back, {user.name}!</h1>
+    <div className="p-4 md:p-6 text-white bg-gray-900 min-h-screen">
+      <h1 className="text-2xl font-bold mb-1">Welcome back, {user.name}!</h1>
       <p className="text-gray-400 mb-6">Continue your learning journey</p>
 
-      <div className="grid grid-cols-4 gap-4 mb-8">
-        <div className="bg-gray-800 p-4 rounded-xl">
+      {/* Stats */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+        <div className="bg-gray-800 p-4 rounded-xl text-center">
           <p>Enrolled Courses</p>
           <h2 className="text-xl font-bold">{enrolledCourses.length}</h2>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl">
+        <div className="bg-gray-800 p-4 rounded-xl text-center">
           <p>Completed Courses</p>
           <h2 className="text-xl font-bold">{getCompletedCourseCount()}</h2>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl">
+        <div className="bg-gray-800 p-4 rounded-xl text-center">
           <p>Certificates</p>
           <h2 className="text-xl font-bold">{completedCertificates.length}</h2>
         </div>
       </div>
 
+      {/* My Courses */}
       <h2 className="text-xl font-semibold mb-4">My Courses</h2>
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         {enrolledCourses.map((course) => {
           const videoLessons = course.modules.flatMap((m) =>
             m.lessons.filter((l) => l.type === "video")
@@ -89,23 +91,28 @@ const Dashboard = () => {
         })}
       </div>
 
+      {/* Certificates */}
       {completedCertificates.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {completedCertificates.map((cert) => (
-            <div key={cert.id} className="bg-gray-800 p-4 rounded-xl">
-              <h3 className="text-lg font-semibold mb-2">Certificate</h3>
-              <CertificateCard
-                title={cert.title}
-                instructor={cert.instructor}
-                date={cert.date}
-              />
-            </div>
-          ))}
-        </div>
+        <>
+          <h2 className="text-xl font-semibold mb-4">Certificates</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            {completedCertificates.map((cert) => (
+              <div key={cert.id} className="bg-gray-800 p-4 rounded-xl">
+                <h3 className="text-lg font-semibold mb-2">Certificate</h3>
+                <CertificateCard
+                  title={cert.title}
+                  instructor={cert.instructor}
+                  date={cert.date}
+                />
+              </div>
+            ))}
+          </div>
+        </>
       )}
 
-      <div className="bg-gray-800 my-4 p-4 rounded-xl">
-        <h3 className="text-lg font-semibold mb-5 text-center">Quick Action</h3>
+      {/* Quick Action */}
+      <div className="bg-gray-800 p-4 rounded-xl">
+        <h3 className="text-lg font-semibold mb-4 text-center">Quick Action</h3>
         <CustomButton
           className="bg-white !text-black px-4 py-2 rounded-lg w-full"
           label={"View All Courses"}
