@@ -37,8 +37,6 @@ const Dashboard = () => {
       date: new Date().toLocaleDateString(),
     }));
 
-  const getCompletedCourseCount = () => completedCertificates.length;
-
   return (
     <div className="p-4 md:p-6 text-white bg-gray-900 min-h-screen">
       <h1 className="text-2xl font-bold mb-1">Welcome back, {user.name}!</h1>
@@ -49,10 +47,7 @@ const Dashboard = () => {
           <p>Enrolled Courses</p>
           <h2 className="text-xl font-bold">{enrolledCourses.length}</h2>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl text-center">
-          <p>Completed Courses</p>
-          <h2 className="text-xl font-bold">{getCompletedCourseCount()}</h2>
-        </div>
+
         <div className="bg-gray-800 p-4 rounded-xl text-center">
           <p>Certificates</p>
           <h2 className="text-xl font-bold">{completedCertificates.length}</h2>
