@@ -66,17 +66,21 @@ GyanLoop is a modern, responsive, and user-friendly **e-learning platform** buil
 - 🧑‍💼 Responsive UI for all screen sizes
 - ☁️ Toast Notifications for Feedback
 
+---
+
 ## 🧰 Tech Stack & Packages
 
-- Vite - Compiling and Bundling - [Link](https://vite.dev/guide/)
-- Tailwind CSS - for styling - [Link](https://tailwindcss.com/docs/installation/using-vite)
-- React Router - for routing - [Link](https://reactrouter.com/start/declarative/installation)
-- Lucide react icons - for icons - [Link](https://lucide.dev/guide/packages/lucide-react)
-- react-toastify - for toast messages - [Link](https://www.npmjs.com/package/react-toastify)
-- Axios - to fetch apis - [Link](https://axios-http.com/docs/intro)
-- jwt-decode - to decode jwt code or tokens - [Link](https://www.npmjs.com/package/jwt-decode)
-- Redux - for declaration of global state variables - [Link](https://redux.js.org/tutorials/quick-start)
-- Yup - for validating forms - [Link](https://www.npmjs.com/package/yup)
+- Vite - For Compiling and Bundling - [Link](https://vite.dev/guide/)
+- Tailwind CSS - For styling - [Link](https://tailwindcss.com/docs/installation/using-vite)
+- React Router - For routing - [Link](https://reactrouter.com/start/declarative/installation)
+- Lucide react icons - For icons - [Link](https://lucide.dev/guide/packages/lucide-react)
+- react-toastify - For toast messages - [Link](https://www.npmjs.com/package/react-toastify)
+- Axios - For fetching apis - [Link](https://axios-http.com/docs/intro)
+- jwt-decode - For decoding jwt code or tokens - [Link](https://www.npmjs.com/package/jwt-decode)
+- Redux - For declaration of global state variables - [Link](https://redux.js.org/tutorials/quick-start)
+- Yup - For validating forms - [Link](https://www.npmjs.com/package/yup)
+
+---
 
 ## 🧑‍🏫 How It Works
 
@@ -104,4 +108,5 @@ GyanLoop is a modern, responsive, and user-friendly **e-learning platform** buil
    - Dashboard summarizes enrolled courses and certificates.
 
 5. **Certificate**
+
    - Upon 100% course completion, users can download a certificate.
