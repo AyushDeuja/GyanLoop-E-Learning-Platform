@@ -19,7 +19,6 @@ const Dashboard = () => {
     enrolledCourseIds.includes(course.id)
   );
 
-  // ✅ Dynamically generate completed certificates
   const completedCertificates = enrolledCourses
     .filter((course) =>
       course.modules.every((module) =>
