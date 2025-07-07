@@ -36,7 +36,7 @@ const Login = () => {
 
     try {
       const validated = await loginSchema.validate(values, {
-        abortEarly: false,
+        abortEarly: true,
       });
 
       const response = await axiosInstance.post(`/auth/login`, validated);

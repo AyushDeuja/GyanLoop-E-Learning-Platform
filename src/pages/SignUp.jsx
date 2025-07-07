@@ -11,8 +11,19 @@ import { LucideArrowLeft } from "lucide-react";
 import { object, string } from "yup";
 
 const signupSchema = object({
-  name: string().required("Name is required"),
-  username: string().required("Username is required"),
+  name: string()
+    .matches(
+      /^[A-Za-z\s]+$/,
+      "Name must not contain numbers or special characters"
+    )
+    .required("Name is required"),
+  email: string()
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Email must be a valid email address"
+    )
+    .required("Email is required"),
+  mobile: string().required("Mobile is required"),
   password: string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
@@ -30,10 +41,10 @@ const SignUp = () => {
 
     try {
       const validated = await signupSchema.validate(values, {
-        abortEarly: false,
+        abortEarly: true,
       });
 
-      const response = await axiosInstance.post(`/auth/signup`, validated);
+      const response = await axiosInstance.post(`/auth/register`, validated);
       dispatch(login(response.data.token));
       navigate("/dashboard");
       toast.success("Account created successfully");
@@ -67,12 +78,8 @@ const SignUp = () => {
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <CustomInput name="name" type="text" id="name" label="Full Name" />
-          <CustomInput
-            name="username"
-            type="text"
-            id="username"
-            label="Email or Mobile"
-          />
+          <CustomInput name="email" type="text" id="email" label="Email" />
+          <CustomInput name="mobile" type="tel" id="mobile" label="Mobile" />
           <CustomInput
             name="password"
             type="password"

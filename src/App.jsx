@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router";
+import { Route, Routes, Navigate, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import AppLayout from "./layout/AppLayout";
 import SignUp from "./pages/SignUp";
@@ -21,13 +21,31 @@ function App() {
     );
   };
 
+  const PublicRoute = ({ children }) => {
+    return token ? <Navigate to="/dashboard" replace /> : children;
+  };
+
   return (
     <Routes>
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/signup"
+        element={
+          <PublicRoute>
+            <SignUp />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
 
       <Route path="/" element={<AppLayout />}>
-        <Route index element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/courses" element={<Courses />} />
 
         <Route
@@ -58,6 +76,7 @@ function App() {
         />
       </Route>
 
+      {/* Fallback route */}
       <Route path="/*" element={<NotFound />} />
     </Routes>
   );
