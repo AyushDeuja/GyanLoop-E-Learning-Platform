@@ -76,7 +76,6 @@ function App() {
         />
       </Route>
 
-      {/* Fallback route */}
       <Route path="/*" element={<NotFound />} />
     </Routes>
   );

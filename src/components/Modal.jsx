@@ -6,11 +6,11 @@ export default function Modal({
   onConfirm,
   content,
   title,
-  primaryButtonLabel = "Delete",
+  primaryButtonLabel,
 }) {
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#0000099] flex justify-center items-center ${
+      className={`fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex justify-center items-center ${
         isModalOpen ? "flex" : "hidden"
       }`}
     >

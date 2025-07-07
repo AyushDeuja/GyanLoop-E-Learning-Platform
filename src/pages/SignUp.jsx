@@ -41,7 +41,7 @@ const SignUp = () => {
 
     try {
       const validated = await signupSchema.validate(values, {
-        abortEarly: true,
+        abortEarly: false,
       });
 
       const response = await axiosInstance.post(`/auth/register`, validated);
