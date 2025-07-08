@@ -7,13 +7,15 @@ const SearchBar = ({ search, category, level, onChange }) => {
   const [levels, setLevels] = useState([]);
 
   useEffect(() => {
-    const uniqueCategories = Array.from(
-      new Set(mockCourses.map((course) => course.category))
-    ).sort();
+    const allCategories = mockCourses.map((course) => course.category);
+    const uniqueCategories = allCategories
+      .filter((cat, index, arr) => arr.indexOf(cat) === index)
+      .sort();
 
-    const uniqueLevels = Array.from(
-      new Set(mockCourses.map((course) => course.difficulty))
-    ).sort();
+    const allLevels = mockCourses.map((course) => course.difficulty);
+    const uniqueLevels = allLevels
+      .filter((lvl, index, arr) => arr.indexOf(lvl) === index)
+      .sort();
 
     setCategories(uniqueCategories);
     setLevels(uniqueLevels);
@@ -54,7 +56,7 @@ const SearchBar = ({ search, category, level, onChange }) => {
           <option value="">All Levels</option>
           {levels.map((lvl) => (
             <option key={lvl} value={lvl}>
-              {lvl.charAt(0).toUpperCase() + lvl.slice(1)}
+              {lvl}
             </option>
           ))}
         </select>

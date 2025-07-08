@@ -1,6 +1,6 @@
 # 🎓 GyanLoop — Online Learning Platform
 
-GyanLoop is a modern, responsive, and user-friendly <b>e-learning platform</b> built with the latest web technologies. It allows users to register, explore courses, take quizzes, track learning progress, and receive certificates upon completion.
+GyanLoop is a modern, responsive, and user-friendly **e-learning platform** built with the latest web technologies. It allows users to register, explore courses, take quizzes, track learning progress, and receive certificates upon completion.
 
 ---
 

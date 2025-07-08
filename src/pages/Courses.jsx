@@ -8,15 +8,13 @@ import {
   setEnrollmentsForUser,
 } from "../redux/enrollmentSlice";
 
-const emptyArray = [];
-
 const Courses = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
   const enrolledCourses = useSelector((state) => {
     const userEnrollments = state.enrollment.enrolledByUser[user?.email];
-    return userEnrollments || emptyArray;
+    return userEnrollments || [];
   });
 
   const [filters, setFilters] = useState({
