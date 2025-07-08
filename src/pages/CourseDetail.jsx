@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { mockCourses } from "../helpers/mockCourses";
@@ -12,6 +11,7 @@ import {
   ChevronDown,
   ArrowLeft,
 } from "lucide-react";
+import { all } from "axios";
 
 const CourseDetail = () => {
   const { id } = useParams();
@@ -23,21 +23,12 @@ const CourseDetail = () => {
 
   const course = mockCourses.find((c) => c.id.toString() === id);
 
-  if (!course)
-    return (
-      <div className="flex items-center justify-center h-[80vh] text-white text-5xl">
-        Course not found
-      </div>
-    );
-
-  // Get all video lessons for this course
   const videoLessons = course.modules.flatMap((m) =>
     m.lessons.filter((l) => l.type === "video")
   );
 
   const totalLessons = videoLessons.length;
 
-  // Get completed video lessons from Redux state
   const completedLessonIds = completedLessonsByUser[course.id] || [];
   const completedCount = videoLessons.filter((l) =>
     completedLessonIds.includes(l.id)
@@ -46,7 +37,8 @@ const CourseDetail = () => {
   const progress =
     totalLessons === 0 ? 0 : Math.floor((completedCount / totalLessons) * 100);
 
-  const allLessons = course.modules.flatMap((module) => module.lessons);
+  const allLessons = course.modules.flatMap((m) => m.lessons);
+  console.log(allLessons);
   const firstLesson = allLessons[0];
 
   return (
@@ -76,7 +68,7 @@ const CourseDetail = () => {
           </span>
           <span className="flex items-center gap-1">
             <Star size={16} className="text-yellow-400 fill-yellow-400" />
-            {course.rating} ({course.reviews.length} reviews)
+            {course.rating}
           </span>
         </div>
 
@@ -101,11 +93,8 @@ const CourseDetail = () => {
 
         <div className="pt-6">
           <h2 className="text-xl font-bold">Course Content</h2>
-          <p className="text-sm text-gray-400">
-            {course.modules.length} modules • {totalLessons} video lessons
-          </p>
+          <p className="text-sm text-gray-400">{totalLessons} video lessons</p>
 
-          {/* Custom Dynamic Progress Bar */}
           <div className="mt-2">
             <p className="text-sm text-gray-400 mb-1">Course Progress</p>
             <div className="w-full h-2 rounded-full bg-gray-700">
@@ -128,13 +117,12 @@ const CourseDetail = () => {
                 className="rounded-lg bg-gray-800/60 p-4 shadow transition-all"
               >
                 <summary className="cursor-pointer font-semibold flex items-center gap-2 text-lg text-white">
-                  {/* Optional: module completion logic could be enhanced */}
-                  {module.title}
+                  Lessons
                   <ChevronDown className="ml-auto w-5 h-5 text-gray-400" />
                 </summary>
                 <ul className="text-sm text-gray-300 mt-3 space-y-2">
                   {module.lessons
-                    .filter((lesson) => lesson.type !== "quiz") // <-- Filter out quizzes here
+                    .filter((lesson) => lesson.type !== "quiz")
                     .map((lesson) => {
                       const isCompleted = completedLessonIds.includes(
                         lesson.id
@@ -169,8 +157,6 @@ const CourseDetail = () => {
           alt={course.title}
           className="h-[180px] w-full object-cover rounded-lg mb-4"
         />
-        <h2 className="text-2xl font-bold text-white mb-2">${course.price}</h2>
-
         <CustomButton
           label="Continue Learning"
           className="mb-3 bg-white !text-black"

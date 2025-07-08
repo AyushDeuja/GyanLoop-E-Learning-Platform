@@ -71,6 +71,7 @@ const LessonPage = () => {
   const module = localCourse.modules.find((m) =>
     m.lessons.some((l) => l.id === lessonId)
   );
+
   const lesson = module?.lessons.find((l) => l.id === lessonId);
 
   const markLessonCompletedLocal = () => {

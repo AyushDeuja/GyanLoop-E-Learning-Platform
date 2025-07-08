@@ -43,13 +43,20 @@ const DashboardCard = ({
         <span>{duration}</span>
       </div>
 
-      <CustomButton
-        className="mt-4 w-full bg-white !text-black py-2 rounded-lg"
-        label={"Continue Learning"}
-        onClick={() =>
-          navigate(`/courses/${courseId}/lessons/${firstLessonId}`)
-        }
-      />
+      <div className="flex flex-col justify-between lg:flex-row">
+        <CustomButton
+          className="mt-4 w-full bg-white !text-black p-4 rounded-lg"
+          label={"Continue Learning"}
+          onClick={() =>
+            navigate(`/courses/${courseId}/lessons/${firstLessonId}`)
+          }
+        />
+        <CustomButton
+          className="mt-4 w-full bg-white !text-black p-4 rounded-lg"
+          label={"View Details"}
+          onClick={() => navigate(`/courses/${courseId}`)}
+        />
+      </div>
     </div>
   );
 };
