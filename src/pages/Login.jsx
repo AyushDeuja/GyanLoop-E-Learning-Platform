@@ -11,8 +11,8 @@ import { LucideArrowLeft } from "lucide-react";
 import { object, string } from "yup";
 
 const loginSchema = object({
-  username: string().required("Username is required"),
   password: string().required("Password is required"),
+  username: string().required("Username is required"),
 });
 
 const Login = () => {
@@ -36,7 +36,7 @@ const Login = () => {
 
     try {
       const validated = await loginSchema.validate(values, {
-        abortEarly: false,
+        abortEarly: true,
       });
 
       const response = await axiosInstance.post(`/auth/login`, validated);
