@@ -37,7 +37,6 @@ const QuizLesson = ({ lesson, onComplete }) => {
     <div className="text-white">
       {questions.map((q, idx) => {
         const selected = answers[q.id];
-        const isCorrect = selected === q.correctAnswer;
 
         return (
           <div

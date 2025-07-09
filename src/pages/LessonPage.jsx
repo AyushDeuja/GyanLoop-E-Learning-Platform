@@ -69,7 +69,7 @@ const LessonPage = () => {
   const previousLesson = allLessons[currentIndex - 1];
 
   const module = localCourse.modules.find((m) =>
-    m.lessons.some((l) => l.id === lessonId)
+    m.lessons.find((l) => l.id === lessonId)
   );
 
   const lesson = module?.lessons.find((l) => l.id === lessonId);

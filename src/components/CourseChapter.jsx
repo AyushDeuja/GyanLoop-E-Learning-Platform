@@ -18,7 +18,6 @@ const CourseChapter = ({ course, activeLessonId }) => {
   const handleLessonClick = (lesson) => {
     navigate(`/courses/${course.id}/lessons/${lesson.id}`);
 
-    // ✅ Only mark video lessons as complete
     if (lesson.type === "video") {
       dispatch(
         markLessonCompleted({
@@ -50,18 +49,12 @@ const CourseChapter = ({ course, activeLessonId }) => {
                     ${
                       isActive
                         ? "bg-blue-600 border border-blue-500"
-                        : isCompleted
-                        ? "bg-gray-800 border border-gray-700"
                         : "bg-gray-800 hover:bg-gray-700 border border-gray-700"
                     }`}
                 >
                   <span
                     className={`text-sm truncate ${
-                      isActive
-                        ? "text-white font-semibold"
-                        : isCompleted
-                        ? "text-gray-300"
-                        : "text-white"
+                      isActive ? "text-white font-semibold" : "text-gray-300"
                     }`}
                   >
                     {lesson.title}

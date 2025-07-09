@@ -12,7 +12,7 @@ export const mockCourses = [
     enrolledStudents: 1250,
     price: 89.99,
     image:
-      "https://miro.medium.com/v2/resize:fit:680/1*RDN058L5gQ02Xy13OaxjnQ.jpeg",
+      "https://miro.medium.com/v2/resize:fit:1400/1*BwJ84XJUWpPNpSKFGU8KDQ.png",
     prerequisites: ["Basic JavaScript", "HTML/CSS"],
     modules: [
       {
