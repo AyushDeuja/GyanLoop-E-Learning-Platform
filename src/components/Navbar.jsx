@@ -54,16 +54,18 @@ const NavBar = () => {
           >
             Courses
           </NavLink>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              `text-lg font-medium relative after:absolute after:w-0 after:h-0.5 after:bg-amber-500 after:bottom-[-4px] after:left-0 hover:after:w-full ${
-                isActive ? "after:w-full text-amber-500" : ""
-              }`
-            }
-          >
-            Dashboard
-          </NavLink>
+          {user && (
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                `text-lg font-medium relative after:absolute after:w-0 after:h-0.5 after:bg-amber-500 after:bottom-[-4px] after:left-0 hover:after:w-full ${
+                  isActive ? "after:w-full text-amber-500" : ""
+                }`
+              }
+            >
+              Dashboard
+            </NavLink>
+          )}
         </div>
 
         <div className="hidden lg:flex items-center space-x-4 z-30">

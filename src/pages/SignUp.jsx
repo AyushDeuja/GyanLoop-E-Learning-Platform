@@ -16,11 +16,11 @@ const signupSchema = object({
     .min(6, "Password must be at least 6 characters"),
   mobile: string().required("Mobile is required"),
   email: string()
+    .required("Email is required")
     .matches(
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
       "Email must be a valid email address"
-    )
-    .required("Email is required"),
+    ),
   name: string()
     .required("Name is required")
     .matches(
