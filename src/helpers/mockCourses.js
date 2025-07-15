@@ -863,7 +863,7 @@ export const mockCourses = [
     enrolledStudents: 1100,
     price: 59.99,
     image:
-      "https://media.licdn.com/dms/image/v2/D5612AQEMqmHJ-gYCdA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1719215858949?e=2147483647&v=beta&t=Y587OHjJFem7ZzQ8inP6Bn8_f8QNiIVe0p4wVAE-WEA",
+      "https://imgs.search.brave.com/FPZyx8SXx2UrNSb520tdHNpqWCy-EDJmXZVAaA4A58Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvZGln/aXRhbC1tYXJrZXRp/bmctcGljdHVyZXMt/M2FpYWh5ajlndzR1/cDJpNS5qcGc",
     prerequisites: ["Basic computer skills"],
     modules: [
       {
