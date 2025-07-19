@@ -25,7 +25,7 @@ export const mockCourses = [
             title: "Introduction to React",
             type: "video",
             duration: "9.5 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: true,
           },
           {
@@ -33,7 +33,7 @@ export const mockCourses = [
             title: "Components and JSX",
             type: "video",
             duration: "5 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: true,
           },
           {
@@ -41,7 +41,7 @@ export const mockCourses = [
             title: "State and Props in React",
             type: "video",
             duration: "7 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -49,7 +49,7 @@ export const mockCourses = [
             title: "React Lifecycle Methods",
             type: "video",
             duration: "8 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -57,7 +57,7 @@ export const mockCourses = [
             title: "Handling Events in React",
             type: "video",
             duration: "6 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -166,7 +166,7 @@ export const mockCourses = [
             title: "What is MERN Stack?",
             type: "video",
             duration: "146 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: true,
           },
           {
@@ -174,7 +174,7 @@ export const mockCourses = [
             title: "MERN Stack Setup",
             type: "video",
             duration: "30 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -182,7 +182,7 @@ export const mockCourses = [
             title: "Express Routing Basics",
             type: "video",
             duration: "25 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -190,7 +190,7 @@ export const mockCourses = [
             title: "React Frontend Overview",
             type: "video",
             duration: "40 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -198,7 +198,7 @@ export const mockCourses = [
             title: "Node.js Backend Fundamentals",
             type: "video",
             duration: "50 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -281,7 +281,7 @@ export const mockCourses = [
             title: "Installing Python",
             type: "video",
             duration: "266 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: true,
           },
           {
@@ -289,7 +289,7 @@ export const mockCourses = [
             title: "Python Variables and Data Types",
             type: "video",
             duration: "45 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -297,7 +297,7 @@ export const mockCourses = [
             title: "Python Control Flow",
             type: "video",
             duration: "38 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -305,7 +305,7 @@ export const mockCourses = [
             title: "Installing and Using pip",
             type: "video",
             duration: "20 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -313,7 +313,7 @@ export const mockCourses = [
             title: "Writing Your First Python Program",
             type: "video",
             duration: "18 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -422,7 +422,7 @@ export const mockCourses = [
             title: "Design Thinking",
             type: "video",
             duration: "10 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -430,7 +430,7 @@ export const mockCourses = [
             title: "Color Theory Basics",
             type: "video",
             duration: "12 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -438,7 +438,7 @@ export const mockCourses = [
             title: "Typography in UI",
             type: "video",
             duration: "15 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -446,7 +446,7 @@ export const mockCourses = [
             title: "User Research Methods",
             type: "video",
             duration: "20 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -538,7 +538,7 @@ export const mockCourses = [
             title: "Array Basics",
             type: "video",
             duration: "8 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -546,7 +546,7 @@ export const mockCourses = [
             title: "Linked Lists Introduction",
             type: "video",
             duration: "15 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -554,7 +554,7 @@ export const mockCourses = [
             title: "Stacks and Queues",
             type: "video",
             duration: "20 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -562,7 +562,7 @@ export const mockCourses = [
             title: "Recursion Basics",
             type: "video",
             duration: "22 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
 
@@ -571,7 +571,7 @@ export const mockCourses = [
             title: "Sorting Algorithms Overview",
             type: "video",
             duration: "25 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -579,7 +579,7 @@ export const mockCourses = [
             title: "Big O Notation",
             type: "video",
             duration: "18 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -663,7 +663,7 @@ export const mockCourses = [
             title: "SELECT Queries",
             type: "video",
             duration: "62 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: true,
           },
           {
@@ -671,7 +671,7 @@ export const mockCourses = [
             title: "Filtering Data with WHERE",
             type: "video",
             duration: "30 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -679,7 +679,7 @@ export const mockCourses = [
             title: "Sorting Results",
             type: "video",
             duration: "28 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -687,7 +687,7 @@ export const mockCourses = [
             title: "Aggregate Functions Overview",
             type: "video",
             duration: "35 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -776,7 +776,7 @@ export const mockCourses = [
             title: "Closures Explained",
             type: "video",
             duration: "25 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -784,7 +784,7 @@ export const mockCourses = [
             title: "Prototype Chain",
             type: "video",
             duration: "20 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -792,7 +792,7 @@ export const mockCourses = [
             title: "Async/Await Basics",
             type: "video",
             duration: "30 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -876,7 +876,7 @@ export const mockCourses = [
             title: "SEO Fundamentals",
             type: "video",
             duration: "25 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -884,7 +884,7 @@ export const mockCourses = [
             title: "SEM Basics",
             type: "video",
             duration: "20 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -892,7 +892,7 @@ export const mockCourses = [
             title: "Email Marketing",
             type: "video",
             duration: "15 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -900,7 +900,7 @@ export const mockCourses = [
             title: "Social Media Strategies",
             type: "video",
             duration: "18 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -984,7 +984,7 @@ export const mockCourses = [
             title: "Introduction to Cloud Computing",
             type: "video",
             duration: "35 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -992,7 +992,7 @@ export const mockCourses = [
             title: "AWS Overview",
             type: "video",
             duration: "40 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {
@@ -1000,7 +1000,7 @@ export const mockCourses = [
             title: "Azure Fundamentals",
             type: "video",
             duration: "38 min",
-            videoUrl: "/public/Episode 6.1-Swiggy API Issue Resolved.mp4",
+            videoUrl: "/public/video.mp4",
             isCompleted: false,
           },
           {

@@ -11,7 +11,6 @@ import {
   ChevronDown,
   ArrowLeft,
 } from "lucide-react";
-import { all } from "axios";
 
 const CourseDetail = () => {
   const { id } = useParams();
